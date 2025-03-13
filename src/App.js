@@ -9,24 +9,25 @@ import Navigation from './components/Navigation'; // Импортируем ко
 
 // Главный компонент приложения
 const App = () => {
-  return (
-    <div className="app">
-      <Router>
-        <div>
-          {/* Навигация */}
-          <Navigation />
+    return (
+        <div className="app">
+            <Router>
+                <div>
+                    {/* Навигация */}
+                    <Navigation />
 
-          {/* Маршруты */}
-          <Routes>
-            <Route path="/" element={<Main />} />
-            <Route path="/objects" element={<Object />} />
-            <Route path="/personal-tasks" element={<PersonalTasks />} />
-            <Route path="/profile" element={<Profile />} />
-          </Routes>
+                    {/* Маршруты */}
+                    <Routes>
+                        <Route path="/" element={<Main />} />
+                        <Route path="/objects" element={<Object />} />
+                        <Route path="/personal-tasks" element={<PersonalTasks />} />
+                        <Route path="/profile" element={<Profile />} />
+                    </Routes>
+                </div>
+            </Router>
         </div>
-      </Router>
-    </div>
-  );
+    );
 };
 
 export default App; // Экспортируем главный компонент приложения
+
