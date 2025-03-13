@@ -6,6 +6,8 @@ import Object from './components/Object'; // Страница "Предметы"
 import PersonalTasks from './components/PersonalTasks'; // Страница "Личные задачи"
 import Profile from './components/Profile'; // Страница "Профиль"
 import Navigation from './components/Navigation'; // Импортируем компонент навигации
+import Login from './components/Login'; // Временный компонент авторизации
+import Register from './components/Register'; // Временный компонент регистрации
 
 // Главный компонент приложения
 const App = () => {
@@ -22,6 +24,9 @@ const App = () => {
             <Route path="/objects" element={<Object />} />
             <Route path="/personal-tasks" element={<PersonalTasks />} />
             <Route path="/profile" element={<Profile />} />
+            {/* Временные маршруты для проверки */}
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
           </Routes>
         </div>
       </Router>

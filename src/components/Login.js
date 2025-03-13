@@ -17,21 +17,25 @@ const Login = () => {
         <p className="switch-text">Нет аккаунта?</p>
       </div>
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Login"
-          value={login}
-          onChange={(e) => setLogin(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <div className="input-group">
+          <input
+            type="text"
+            placeholder="Login"
+            value={login}
+            onChange={(e) => setLogin(e.target.value)}
+          />
+        </div>
+        <div className="input-group">
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
         <div className="buttons">
-          <button type="button">Назад</button>
-          <button type="submit">Авторизоваться</button>
+          <button type="button" className="back-button">Назад</button>
+          <button type="submit" className="login-button">Войти</button>
         </div>
       </form>
     </div>

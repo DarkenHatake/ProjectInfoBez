@@ -19,33 +19,41 @@ const Register = () => {
         <p className="switch-text">Есть аккаунт?</p>
       </div>
       <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Repeat password"
-          value={repeatPassword}
-          onChange={(e) => setRepeatPassword(e.target.value)}
-        />
+        <div className="input-group">
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div className="input-group">
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
+        <div className="input-group">
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <div className="input-group">
+          <input
+            type="password"
+            placeholder="Repeat password"
+            value={repeatPassword}
+            onChange={(e) => setRepeatPassword(e.target.value)}
+          />
+        </div>
         <div className="buttons">
-          <button type="button">Назад</button>
-          <button type="submit">Зарегистрироваться</button>
+          <button type="button" className="back-button">Назад</button>
+          <button type="submit" className="register-button">Зарегистрироваться</button>
         </div>
       </form>
     </div>
