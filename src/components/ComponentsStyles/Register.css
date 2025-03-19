@@ -107,3 +107,25 @@
 .buttons .register-button:hover {
   background: #00ccb3;
 }
+
+/* Стили для поля пароля с иконкой глаза */
+.password-input {
+  position: relative;
+}
+
+.password-input input {
+  padding-right: 40px; /* Оставляем место для иконки */
+}
+
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #7e7979;
+}
+
+.password-toggle:hover {
+  color: #000000;
+}

@@ -1,5 +1,6 @@
 // CreateItemModal.js
 import React, { useState } from 'react';
+import './ComponentsStyles/CreateItemModal.css'; // Подключаем стили
 
 const CreateItemModal = ({ onClose, onAddItem }) => {
     const [itemName, setItemName] = useState('');
@@ -23,55 +24,37 @@ const CreateItemModal = ({ onClose, onAddItem }) => {
     };
 
     return (
-        <div style={modalStyles}>
-            <h2>Создание нового предмета</h2>
-            <div style={{ marginBottom: '10px' }}>
-                <label>Название:</label>
-                <input
-                    type="text"
-                    placeholder="Введите название"
-                    value={itemName}
-                    onChange={(e) => setItemName(e.target.value)}
-                />
-            </div>
-            <div style={{ marginBottom: '10px' }}>
-                <label>Описание:</label>
-                <textarea
-                    placeholder="Введите описание"
-                    value={itemDescription}
-                    onChange={(e) => setItemDescription(e.target.value)}
-                    rows="3"
-                />
-            </div>
-            <div style={{ marginBottom: '10px' }}>
-                <label>Дедлайн:</label>
-                <input
-                    type="date"
-                    value={itemDeadline}
-                    onChange={(e) => setItemDeadline(e.target.value)}
-                />
-            </div>
-            <div style={{ marginTop: '10px' }}>
-                <button onClick={handleAdd} style={{ marginRight: '10px' }}>
-                    Добавить
-                </button>
-                <button onClick={onClose}>Закрыть</button>
-            </div>
+        <div className="create-item-modal">
+          <h2>Создание предмета</h2>
+          <div className="input-group">
+            <input
+              type="text"
+              placeholder="Название"
+              value={itemName}
+              onChange={(e) => setItemName(e.target.value)}
+            />
+          </div>
+          <div className="input-group">
+            <textarea
+              placeholder="Описание"
+              value={itemDescription}
+              onChange={(e) => setItemDescription(e.target.value)}
+              rows="3"
+            />
+          </div>
+          <div className="input-group">
+            <input
+              type="date"
+              value={itemDeadline}
+              onChange={(e) => setItemDeadline(e.target.value)}
+            />
+          </div>
+          <div className="buttons">
+            <button className="back-button" onClick={onClose}>Назад</button>
+            <button className="add-button" onClick={handleAdd}>Добавить</button>
+          </div>
         </div>
-    );
-};
-
-// Стили для модального окна
-const modalStyles = {
-    position: 'fixed',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    backgroundColor: 'white',
-    padding: '20px',
-    borderRadius: '8px',
-    boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
-    zIndex: 1000,
-};
-
-export default CreateItemModal;
+      );
+    };
+    
+    export default CreateItemModal;

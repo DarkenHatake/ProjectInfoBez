@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Импортируем иконки глаза
 import './ComponentsStyles/Login.css';
 
 const Login = () => {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false); // Состояние для видимости пароля
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Логин:', login, 'Пароль:', password);
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword); // Переключаем видимость пароля
   };
 
   return (
@@ -25,13 +31,16 @@ const Login = () => {
             onChange={(e) => setLogin(e.target.value)}
           />
         </div>
-        <div className="input-group">
+        <div className="input-group password-input">
           <input
-            type="password"
+            type={showPassword ? 'text' : 'password'} // Переключаем тип поля
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+          <span className="password-toggle" onClick={togglePasswordVisibility}>
+            {showPassword ? <FaEye /> : <FaEyeSlash />} {/* Иконка глаза */}
+          </span>
         </div>
         <div className="buttons">
           <button type="button" className="back-button">Назад</button>

@@ -1,0 +1,67 @@
+/* Основной контейнер */
+.main-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background: #ffffff;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  /* Надпись "Дашборд" */
+  .dashboard-title {
+    position: absolute;
+    left: 20px; /* Сдвигаем ближе к левому краю */
+    top: 20px; /* Сдвигаем ближе к верхнему краю */
+    font-family: 'Roboto Mono', monospace;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    color: #000000;
+    margin: 0;
+  }
+  
+  /* Общие стили для рамок */
+  .frame {
+    position: absolute;
+    width: 400px; /* Уменьшили ширину */
+    height: 300px; /* Уменьшили высоту */
+    background: #ffffff;
+    border: 3px solid #80ffe8;
+    border-radius: 8px;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  /* Заголовок внутри рамки */
+  .frame-title {
+    font-family: 'Roboto Mono', monospace;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+    color: #000000;
+    margin: 0 0 20px 0;
+    text-align: left; /* Выравниваем текст по левому краю */
+  }
+  
+  /* Рамка "Предметы" */
+  .subjects-frame {
+    left: 20px; /* Сдвигаем ближе к левому краю */
+    top: 100px; /* Сдвигаем ниже заголовка "Дашборд" */
+  }
+  
+  /* Рамка "Выполнено за 2 недели" */
+  .completed-frame {
+    left: 440px; /* Сдвигаем вправо от первой рамки */
+    top: 100px; /* Та же высота, что и у первой рамки */
+  }
+  
+  /* Рамка "Персональные задачи" */
+  .personal-tasks-frame {
+    left: 20px; /* Сдвигаем ближе к левому краю */
+    top: 420px; /* Сдвигаем ниже первых двух рамок */
+    width: 820px; /* Ширина как в Figma */
+    height: 200px; /* Высота как в Figma */
+  }

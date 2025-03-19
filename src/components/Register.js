@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Импортируем иконки глаза
 import './ComponentsStyles/Register.css';
 
 const Register = () => {
@@ -6,10 +7,20 @@ const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false); // Состояние для видимости пароля
+  const [showRepeatPassword, setShowRepeatPassword] = useState(false); // Состояние для видимости повторного пароля
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Email:', email, 'Username:', username, 'Password:', password);
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword); // Переключаем видимость пароля
+  };
+
+  const toggleRepeatPasswordVisibility = () => {
+    setShowRepeatPassword(!showRepeatPassword); // Переключаем видимость повторного пароля
   };
 
   return (
@@ -35,21 +46,27 @@ const Register = () => {
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
-        <div className="input-group">
+        <div className="input-group password-input">
           <input
-            type="password"
+            type={showPassword ? 'text' : 'password'} // Переключаем тип поля
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+          <span className="password-toggle" onClick={togglePasswordVisibility}>
+            {showPassword ? <FaEye /> : <FaEyeSlash />} {/* Иконка глаза */}
+          </span>
         </div>
-        <div className="input-group">
+        <div className="input-group password-input">
           <input
-            type="password"
+            type={showRepeatPassword ? 'text' : 'password'} // Переключаем тип поля
             placeholder="Repeat password"
             value={repeatPassword}
             onChange={(e) => setRepeatPassword(e.target.value)}
           />
+          <span className="password-toggle" onClick={toggleRepeatPasswordVisibility}>
+            {showRepeatPassword ? <FaEye /> : <FaEyeSlash />} {/* Иконка глаза */}
+          </span>
         </div>
         <div className="buttons">
           <button type="button" className="back-button">Назад</button>
