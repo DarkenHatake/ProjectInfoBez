@@ -1,8 +1,8 @@
 /* Основной контейнер */
 .main-container {
-    position: relative;
+    position: absolute;
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     background: #ffffff;
     padding: 20px;
     box-sizing: border-box;
@@ -11,8 +11,8 @@
   /* Надпись "Дашборд" */
   .dashboard-title {
     position: absolute;
-    left: 20px; /* Сдвигаем ближе к левому краю */
-    top: 20px; /* Сдвигаем ближе к верхнему краю */
+    left: 330px; /* Сдвигаем ближе к левому краю */
+    top: 40px; /* Сдвигаем ближе к верхнему краю */
     font-family: 'Roboto Mono', monospace;
     font-style: normal;
     font-weight: 400;
@@ -48,19 +48,19 @@
   
   /* Рамка "Предметы" */
   .subjects-frame {
-    left: 20px; /* Сдвигаем ближе к левому краю */
+    left: 330px; /* Сдвигаем ближе к левому краю */
     top: 100px; /* Сдвигаем ниже заголовка "Дашборд" */
   }
   
   /* Рамка "Выполнено за 2 недели" */
   .completed-frame {
-    left: 440px; /* Сдвигаем вправо от первой рамки */
+    left: 750px; /* Сдвигаем вправо от первой рамки */
     top: 100px; /* Та же высота, что и у первой рамки */
   }
   
   /* Рамка "Персональные задачи" */
   .personal-tasks-frame {
-    left: 20px; /* Сдвигаем ближе к левому краю */
+    left: 330px; /* Сдвигаем ближе к левому краю */
     top: 420px; /* Сдвигаем ниже первых двух рамок */
     width: 820px; /* Ширина как в Figma */
     height: 200px; /* Высота как в Figma */
