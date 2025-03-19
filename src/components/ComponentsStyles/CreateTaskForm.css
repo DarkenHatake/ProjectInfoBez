@@ -1,0 +1,91 @@
+.create-task-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 480px;
+    background: #FFFFFF;
+    border: 3px solid #A8FFA8;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* Растягиваем элементы на всю ширину */
+}
+
+.create-task-container h2 {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 400;
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #000000;
+}
+
+/* Общие стили для всех инпутов и textarea */
+.create-task-container input[type="text"],
+.create-task-container textarea,
+.create-task-container input[type="date"] {
+    width: 100%; /* Ширина 100% от родительского контейнера */
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 2px solid #000000;
+    border-radius: 4px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 18px;
+    color: #000;
+    box-sizing: border-box; /* Учитываем padding и border в ширине */
+}
+
+.create-task-container textarea {
+    resize: none;
+    height: 70px;
+}
+
+.date-fields {
+    display: flex;
+    flex-direction: column; /* Элементы друг под другом */
+    gap: 10px;
+    width: 100%; /* Ширина 100% от родительского контейнера */
+}
+
+.date-fields input[type="date"] {
+    width: 100%; /* Ширина 100% от родительского контейнера */
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.create-btn, .cancel-btn {
+    width: 48%;
+    height: 50px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.create-btn {
+    background: #80FFE8;
+}
+
+.create-btn:hover {
+    background: #5cd6c4;
+}
+
+.cancel-btn {
+    background: white;
+    border: 2px solid red;
+    color: red;
+}
+
+.cancel-btn:hover {
+    background: red;
+    color: white;
+}
