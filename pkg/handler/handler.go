@@ -1,8 +1,18 @@
 package handler
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/DarkenHatake/ProjectInfoBez/pkg/service"
+	"github.com/gin-gonic/gin"
+)
 
+// тк обработчики будут вызывать методы сервиса нужно добавить структуру
 type Handler struct {
+	services *service.Service
+}
+
+// конструктор для внедрения зависимостей
+func NewHandler(services *service.Service) *Handler {
+	return &Handler{services: services}
 }
 
 func (h *Handler) InitRoutes() *gin.Engine {
