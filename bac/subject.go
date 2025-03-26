@@ -1,4 +1,4 @@
-package _ProjectInfoBez
+package ProjectInfoBez
 
 type Subject struct {
 	Id         string `json:"id"`
