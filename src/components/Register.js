@@ -70,7 +70,14 @@ const Register = () => {
         </div>
         <div className="buttons">
           <button type="button" className="back-button">Назад</button>
-          <button type="submit" className="register-button">Зарегистрироваться</button>
+          <button type="submit" className="register-button" onClick={()=>
+            {
+              if (repeatPassword === password){
+                //dont send repeatPassword to back-end
+                //TODO request for register. Using axios.post. Better relocate all requests to another file.
+              }
+            }
+            }>Зарегистрироваться</button>
         </div>
       </form>
     </div>

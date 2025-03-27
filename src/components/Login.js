@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Импортируем иконки глаза
 import './ComponentsStyles/Login.css';
-
+import axios from 'axios';
 const Login = () => {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
@@ -44,7 +44,13 @@ const Login = () => {
         </div>
         <div className="buttons">
           <button type="button" className="back-button">Назад</button>
-          <button type="submit" className="login-button">Войти</button>
+          <button type="submit" className="login-button" onClick={() => {axios.post("http::/localhost:8000/auth/sign-in",
+          { //TODO Request according to backend route and date
+            // TODO Transfer all requests to another file with requests
+              "username": {username},
+              "password": {password}
+          }
+          )}}>Войти</button>
         </div>
       </form>
     </div>
