@@ -1,0 +1,111 @@
+/* Основной контейнер */
+.profile-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: #ffffff;
+    overflow: hidden; /* Скрываем всё, что выходит за пределы экрана */
+}
+
+/* Контейнер для центрирования контента */
+.content-container {
+    position: absolute;
+    left: 50%; /* Сдвигаем контейнер на 50% вправо */
+    transform: translateX(-50%); /* Возвращаем на половину своей ширины влево */
+    width: 1920px; /* Ширина как в Figma */
+    height: 100%;
+}
+
+/* Заголовок "Профиль" */
+.profile-title {
+    position: absolute;
+    width: 101px;
+    height: 32px;
+    left: 450px; /* Позиция как в Figma */
+    top: 32px; /* Позиция как в Figma */
+    font-family: 'Roboto Mono', monospace;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    color: #000000;
+}
+
+/* Карточка с данными пользователя */
+.profile-card {
+    position: absolute;
+    width: 1032px;
+    height: 222px;
+    left: 444px; /* Позиция как в Figma */
+    top: 40px; /* Позиция как в Figma */
+}
+
+/* Прямоугольник для карточки */
+.profile-card::before {
+    content: '';
+    position: absolute;
+    width: 1032px;
+    height: 140px;
+    left: 0;
+    top: 82px; /* Сдвигаем вниз относительно карточки */
+    background: #ffffff;
+    border: 3px solid #80ffe8;
+    border-radius: 8px;
+}
+
+/* Данные пользователя */
+.user-info {
+    position: absolute;
+    left: 17px; /* Отступ слева (461px - 444px) */
+    top: 99px; /* Отступ сверху (246px - 147px) */
+}
+
+.user-info p {
+    margin: 0;
+    font-family: 'Roboto Mono', monospace;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+    color: #000000;
+}
+
+.username {
+    width: 241px;
+    height: 26px;
+}
+
+.email {
+    width: 340px;
+    height: 26px;
+    margin-top: 20px !important; /* Отступ между строками */
+}
+
+.password {
+    width: 217px;
+    height: 26px;
+    margin-top: 20px !important; /* Отступ между строками */
+}
+
+/* Кнопка "Редактировать" */
+.edit-button {
+    position: absolute;
+    width: 146px;
+    height: 47px;
+    left: 886px; /* 1330px - 444px */
+    top: 0;
+    background: #a8ffa8;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Roboto Mono', monospace;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+    color: #000000;
+    cursor: pointer;
+}
+
+.edit-button:hover {
+    background: #90e090; /* Изменение цвета при наведении */
+}

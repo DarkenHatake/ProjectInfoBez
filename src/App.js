@@ -15,7 +15,6 @@ const App = () => {
                 <div>
                     {/* Навигация */}
                     <Navigation />
-
                     {/* Маршруты */}
                     <Routes>
                         <Route path="/" element={<Main />} />
