@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import './ComponentsStyles/CreateItemModal.css'; // Подключаем стили
 
 const CreateItemModal = ({ onClose, onAddItem }) => {
+
     const [itemName, setItemName] = useState('');
     const [itemDescription, setItemDescription] = useState('');
     const [itemDeadline, setItemDeadline] = useState('');
