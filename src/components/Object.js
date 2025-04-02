@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import CreateItemModal from './CreateItemModal';
 import ItemList from './ItemList';
+import './ComponentsStyles/Object.css';
 
 const Object = () => {
     const [isModalOpen, setModalOpen] = useState(false);
