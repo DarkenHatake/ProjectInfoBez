@@ -1,0 +1,42 @@
+.task-list {
+    margin-top: 200px;
+    width: 1232px;
+    position: absolute;
+    left: 333px;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.task-item {
+    background: #ffffff;
+    border: 2px solid #80ffe8;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+.task-title {
+    display: inline-block;
+}
+.delete-button {
+    width: 104px;
+    height: 31px;
+    padding: 5px 20px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 16px;
+    background-color: transparent;
+    border: 2px solid #EE8283; /* Прозрачный фон */
+    border-radius: 5px; /* Скругленные углы */
+    cursor: pointer;
+    margin-left: 20px; /* Отступ слева от заголовка */
+}
+.edit-button {
+    width: 104px;
+    height: 31px;
+    padding: 5px 20px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 16px;
+    background-color: #a8ffa8;
+    border: 2px solid #a8ffa8; /* Прозрачный фон */
+    border-radius: 5px; /* Скругленные углы */
+    cursor: pointer;
+    margin-left: 20px; /* Отступ слева от заголовка */
+}

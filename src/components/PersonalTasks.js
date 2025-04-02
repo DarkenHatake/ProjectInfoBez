@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import CreateTaskForm from './CreateTaskForm';
 import TaskList from './TaskList';
 import EditTask from './EditTask';
+import './ComponentsStyles/PersonalTasks.css';
 
 const PersonalTasks = () => {
     const [tasks, setTasks] = useState([]);
@@ -47,9 +48,8 @@ const PersonalTasks = () => {
 
     return (
         <div className="personal-tasks-container">
-            <h1>Личные задачи</h1>
-            <button onClick={handleOpenCreateModal}>Создать задачу</button>
-
+            <h1 className="personal-tasks-title">Личные задачи</h1>
+            <button className="create-personal-tasks" onClick={handleOpenCreateModal}>Создать задачу</button>
             <TaskList tasks={tasks} onEdit={handleOpenEditModal} onDelete={handleDeleteTask} />
 
             {/* Модальное окно с формой создания задачи */}
