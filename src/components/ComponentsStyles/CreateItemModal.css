@@ -67,9 +67,11 @@
     display: flex;
     justify-content: space-between;
     margin-top: 15px; /* Уменьшили отступ сверху */
+    gap: 20px; /* Добавляем расстояние между кнопками */
   }
   
   .buttons button {
+    flex: 1; /* Равномерное распределение ширины */
     padding: 10px 20px;
     font-family: 'Roboto Mono', monospace;
     font-style: normal;
@@ -80,6 +82,7 @@
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
+    height: 50px; /* Фиксированная высота для кнопок */
   }
   
   /* Кнопка "Назад" */

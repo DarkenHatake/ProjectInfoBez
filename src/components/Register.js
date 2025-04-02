@@ -1,83 +1,122 @@
 import React, { useState } from 'react';
-import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Импортируем иконки глаза
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import './ComponentsStyles/Register.css';
+import { registerUser } from '../api';
 
 const Register = () => {
-  const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [repeatPassword, setRepeatPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false); // Состояние для видимости пароля
-  const [showRepeatPassword, setShowRepeatPassword] = useState(false); // Состояние для видимости повторного пароля
+  const [formData, setFormData] = useState({
+    email: '',
+    username: '',
+    password: '',
+    repeatPassword: ''
+  });
+  const [showPassword, setShowPassword] = useState(false);
+  const [showRepeatPassword, setShowRepeatPassword] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Email:', email, 'Username:', username, 'Password:', password);
-  };
+    setError('');
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword); // Переключаем видимость пароля
-  };
+    if (formData.password !== formData.repeatPassword) {
+      setError('Пароли не совпадают');
+      return;
+    }
 
-  const toggleRepeatPasswordVisibility = () => {
-    setShowRepeatPassword(!showRepeatPassword); // Переключаем видимость повторного пароля
+    try {
+      const response = await registerUser(formData.email, formData.username, formData.password);
+      console.log('Успешная регистрация:', response.data);
+    } catch (err) {
+      setError(err.response?.data?.message || 'Ошибка регистрации');
+    }
   };
 
   return (
-    <div className="register-container">
+    <div className={`register-container ${error ? 'with-error' : ''}`}>
       <div className="register-header">
         <h2>Регистрация</h2>
         <p className="switch-text">Есть аккаунт?</p>
       </div>
+      
+      {error && (
+        <div className="error-message">
+          {error}
+        </div>
+      )}
+
       <form onSubmit={handleSubmit}>
         <div className="input-group">
           <input
             type="email"
+            name="email"
             placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={formData.email}
+            onChange={handleChange}
+            required
           />
         </div>
+        
         <div className="input-group">
           <input
             type="text"
+            name="username"
             placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={formData.username}
+            onChange={handleChange}
+            required
           />
         </div>
+        
         <div className="input-group password-input">
           <input
-            type={showPassword ? 'text' : 'password'} // Переключаем тип поля
+            type={showPassword ? 'text' : 'password'}
+            name="password"
             placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={formData.password}
+            onChange={handleChange}
+            required
+            minLength="6"
           />
-          <span className="password-toggle" onClick={togglePasswordVisibility}>
-            {showPassword ? <FaEye /> : <FaEyeSlash />} {/* Иконка глаза */}
+          <span 
+            className="password-toggle" 
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? <FaEye /> : <FaEyeSlash />}
           </span>
         </div>
+        
         <div className="input-group password-input">
           <input
-            type={showRepeatPassword ? 'text' : 'password'} // Переключаем тип поля
+            type={showRepeatPassword ? 'text' : 'password'}
+            name="repeatPassword"
             placeholder="Repeat password"
-            value={repeatPassword}
-            onChange={(e) => setRepeatPassword(e.target.value)}
+            value={formData.repeatPassword}
+            onChange={handleChange}
+            required
           />
-          <span className="password-toggle" onClick={toggleRepeatPasswordVisibility}>
-            {showRepeatPassword ? <FaEye /> : <FaEyeSlash />} {/* Иконка глаза */}
+          <span 
+            className="password-toggle" 
+            onClick={() => setShowRepeatPassword(!showRepeatPassword)}
+          >
+            {showRepeatPassword ? <FaEye /> : <FaEyeSlash />}
           </span>
         </div>
+        
         <div className="buttons">
-          <button type="button" className="back-button">Назад</button>
-          <button type="submit" className="register-button" onClick={()=>
-            {
-              if (repeatPassword === password){
-                //dont send repeatPassword to back-end
-                //TODO request for register. Using axios.post. Better relocate all requests to another file.
-              }
-            }
-            }>Зарегистрироваться</button>
+          <button type="button" className="back-button">
+            Назад
+          </button>
+          <button type="submit" className="register-button">
+            Зарегистрироваться
+          </button>
         </div>
       </form>
     </div>

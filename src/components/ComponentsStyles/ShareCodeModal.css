@@ -1,0 +1,122 @@
+/* Основной контейнер */
+.share-modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Контент модального окна */
+.share-modal-content {
+    position: relative;
+    width: 480px;
+    height: 240px;
+    background: #FFFFFF;
+    border: 3px solid #A8FFA8;
+    border-radius: 12px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Добавил выравнивание по центру */
+}
+
+/* Заголовок */
+.share-modal-title {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #000000;
+    margin: 0 0 25px 0;
+}
+
+/* Группа с кодом */
+.code-input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    width: 450px;
+}
+
+.code-label {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #000000;
+    margin-right: 15px;
+    white-space: nowrap;
+    width: 50px; /* Фиксированная ширина для выравнивания */
+}
+
+.code-input {
+    width: 350px;
+    height: 35px;
+    background: #FFFFFF;
+    border: 2px solid #000000;
+    border-radius: 4px;
+    padding: 7px 17px;
+    font-family: 'Roboto Mono', monospace;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+    color: #7E7979;
+}
+
+/* Кнопки */
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 432px;
+    margin-top: auto;
+    height: 55px;
+}
+
+.back-button {
+    flex: 1;
+    height: 50px;
+    background: #FFFFFF;
+    border: 2px solid #FF0011;
+    border-radius: 8px;
+    font-family: 'Roboto Mono', monospace;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+    color: #000000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #FFEAED;
+}
+
+.copy-button {
+    flex: 1;
+    height: 50px;
+    background: #80FFE8;
+    border-radius: 8px;
+    border: none;
+    font-family: 'Roboto Mono', monospace;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+    color: #000000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.copy-button:hover {
+    background: #00CCB3;
+}
