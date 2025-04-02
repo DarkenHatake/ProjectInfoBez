@@ -1,16 +1,20 @@
-/* Центрируем контейнер */
 .register-container {
-  position: absolute; /* Абсолютное позиционирование */
-  top: 50%; /* Сдвигаем на 50% от верха */
-  left: 50%; /* Сдвигаем на 50% от левого края */
-  transform: translate(-50%, -50%); /* Смещаем обратно на половину своей ширины и высоты */
-  width: 480px; /* Ширина окна */
-  height: 408px; /* Высота окна */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 480px;
+  min-height: 408px; /* Изменено с height на min-height */
   background: #ffffff;
   border: 3px solid #a8ffa8;
   border-radius: 12px;
   padding: 20px;
   box-sizing: border-box;
+  transition: min-height 0.3s ease;
+}
+
+.register-container.with-error {
+  min-height: 450px; /* Увеличиваем высоту при наличии ошибки */
 }
 
 /* Остальные стили остаются без изменений */
@@ -128,4 +132,22 @@
 
 .password-toggle:hover {
   color: #000000;
+}
+
+.error-message {
+  padding: 10px;
+  margin: 0 0 15px 0; /* Улучшенные отступы */
+  background-color: #ffebee;
+  border: 1px solid #ffcdd2;
+  border-radius: 4px;
+  color: #d32f2f;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 16px;
+  text-align: center;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }

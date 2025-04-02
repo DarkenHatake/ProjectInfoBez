@@ -1,11 +1,11 @@
 /* Центрируем контейнер */
 .login-container {
-  position: absolute; /* Абсолютное позиционирование */
-  top: 50%; /* Сдвигаем на 50% от верха */
-  left: 50%; /* Сдвигаем на 50% от левого края */
-  transform: translate(-50%, -50%); /* Смещаем обратно на половину своей ширины и высоты */
-  width: 480px; /* Ширина окна */
-  height: 280px; /* Высота окна */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 480px;
+  height: auto;
   background: #ffffff;
   border: 3px solid #a8ffa8;
   border-radius: 12px;
@@ -13,7 +13,7 @@
   box-sizing: border-box;
 }
 
-/* Остальные стили */
+/* Заголовок */
 .login-header {
   display: flex;
   justify-content: space-between;
@@ -21,22 +21,16 @@
   margin-bottom: 20px;
 }
 
-.login-header h2 {
+.login-title {
   font-family: 'Inter', sans-serif;
-  font-style: normal;
-  font-weight: 400;
   font-size: 24px;
-  line-height: 29px;
   color: #000000;
   margin: 0;
 }
 
 .login-header .switch-text {
   font-family: 'Inter', sans-serif;
-  font-style: normal;
-  font-weight: 400;
   font-size: 24px;
-  line-height: 29px;
   color: #80b3ff;
   cursor: pointer;
   margin: 0;
@@ -46,49 +40,73 @@
   text-decoration: underline;
 }
 
+/* Поля ввода */
 .input-group {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+  position: relative;
 }
 
 .input-group input {
-  width: 100%;
+  width: 100%; /* Одинаковая ширина */
   height: 40px;
   padding: 10px;
   background: #ffffff;
   border: 2px solid #000000;
   border-radius: 4px;
   font-family: 'Roboto Mono', monospace;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 26px;
+  font-size: 18px;
   color: #000000;
   box-sizing: border-box;
 }
 
-.input-group input::placeholder {
-  color: #7e7979;
+/* Поле пароля */
+.password-input {
+  position: relative;
 }
 
+.password-input input {
+  width: 100%; /* Теперь совпадает с полем логина */
+  padding-right: 45px;
+}
+
+/* Иконка глаза */
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #7e7979;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.password-toggle:hover {
+  color: #000000;
+}
+
+/* Кнопки */
 .buttons {
   display: flex;
   justify-content: space-between;
+  gap: 15px;
   margin-top: 20px;
 }
 
 .buttons button {
-  padding: 10px 20px;
+  flex: 1;
+  padding: 10px 15px;
   font-family: 'Roboto Mono', monospace;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 26px;
-  color: #000000;
+  font-size: 18px;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Кнопка "Назад" */
 .buttons .back-button {
   background: #ffffff;
   border: 2px solid #ff0011;
@@ -99,6 +117,7 @@
   color: #ffffff;
 }
 
+/* Кнопка "Войти" */
 .buttons .login-button {
   background: #80ffe8;
   border: none;
@@ -106,26 +125,4 @@
 
 .buttons .login-button:hover {
   background: #00ccb3;
-}
-
-/* Стили для поля пароля с иконкой глаза */
-.password-input {
-  position: relative;
-}
-
-.password-input input {
-  padding-right: 40px; /* Оставляем место для иконки */
-}
-
-.password-toggle {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  color: #7e7979;
-}
-
-.password-toggle:hover {
-  color: #000000;
 }

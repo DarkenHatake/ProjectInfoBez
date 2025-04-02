@@ -1,35 +1,126 @@
+/* Основные стили */
 .navigation {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #d5ecc5; /* Light green background */
-    padding: 20px 0;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    margin: 0; /* Обнуление внешних отступов */
+    height: 80px;
+    background: #CDEAC0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    z-index: 1000;
+    padding: 0 120px;
 }
 
+.nav-spacer {
+    height: 80px;
+    width: 100%;
+}
+
+/* Группы элементов */
+.nav-left-group {
+    display: flex;
+    gap: 10px; /* Уменьшенное расстояние между кнопками */
+    width: 50%;
+}
+
+.nav-right-group {
+    width: fit-content;
+}
+
+/* Общие стили кнопок */
 .nav-item {
-    font-size: 16px;
-    color: black;
-    padding: 10px 20px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 20px;
+    color: #000000;
     cursor: pointer;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+    border-radius: 4px;
     text-align: center;
-    transition: background-color 0.3s;
-    border-radius: 5px;
+    min-width: 120px; /* Фиксированная ширина для всех кнопок */
+    box-sizing: border-box;
+    will-change: background-color; /* Оптимизация анимации */
 }
 
+.nav-item a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+}
+
+/* Специфичные стили */
 .nav-item:hover {
-    background-color: #b3d9a5; /* Darker green on hover */
-    border-radius: 5px;
+    background-color: rgba(179, 217, 165, 0.7);
 }
 
-.active {
-/*    background-color: white;*/
-    border-radius: 5px;
+.profile-item {
+    background: #80FFE8;
+    margin-left: 40px; /* Отделение от основной группы */
 }
 
-.profile {
-    /*background-color: #006400; *//* Customized color for "Профиль" */
-    border-radius: 5px;
+.profile-item:hover {
+    background: #00CCB3;
+}
+
+/* Адаптация с фиксированными пропорциями */
+@media (max-width: 1600px) {
+    .navigation {
+        padding: 0 80px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .navigation {
+        padding: 0 20px;
+        height: 70px;
+    }
+    .nav-spacer {
+        height: 70px;
+    }
+    .nav-left-group {
+        gap: 0px;
+        width: 70%;
+    }
+    .nav-item {
+        min-width: 120px;
+        font-size: 18px;
+        padding: 8px 12px;
+    }
+    .profile-item {
+        margin-left: 0px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navigation {
+        padding: 0 20px;
+        height: 70px;
+    }
+    .nav-spacer {
+        height: 70px;
+    }
+    .nav-left-group {
+        gap: 0px;
+        width: 70%;
+    }
+    .nav-item {
+        min-width: 120px;
+        font-size: 18px;
+        padding: 8px 12px;
+    }
+    .profile-item {
+        margin-left: 0px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-item {
+        min-width: 80px;
+        padding: 5px 8px;
+        font-size: 16px;
+    }
 }

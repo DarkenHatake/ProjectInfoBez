@@ -1,4 +1,5 @@
 /* Основной контейнер */
+
 .main-container {
     position: absolute;
     width: 100%;
@@ -6,6 +7,7 @@
     background: #ffffff;
     padding: 20px;
     box-sizing: border-box;
+    margin: 0;
   }
   
   /* Надпись "Дашборд" */
