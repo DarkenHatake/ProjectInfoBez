@@ -1,4 +1,4 @@
-package ProjectInfoBez
+package bac
 
 type User struct {
 	Id       string `json:"id"`

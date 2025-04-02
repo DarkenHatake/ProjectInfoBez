@@ -1,4 +1,4 @@
-package ProjectInfoBez
+package bac
 
 import (
 	"context"

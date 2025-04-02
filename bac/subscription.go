@@ -1,4 +1,4 @@
-package ProjectInfoBez
+package bac
 
 type Subscription struct {
 	Id         string `json:"id"`
