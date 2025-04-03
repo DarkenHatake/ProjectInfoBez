@@ -19,9 +19,12 @@
 }
 
 .item-name {
-    display: inline-block; /* Позволяет заголовку занимать только необходимое пространство */
-}
+    margin-top: 10px;
 
+}
+.item-headr{
+    text-align: left;
+}
 .delete-button {
     width: 104px;
     height: 31px;
@@ -46,7 +49,9 @@
     cursor: pointer;
     margin-left: 20px; /* Отступ слева от заголовка */
 }
-.item-description,
+.item-description{
+    margin-top: 30px;
+}
 .item-deadline {
     margin-top: 10px; /* Отступ сверху для описания и дедлайна */
 }
