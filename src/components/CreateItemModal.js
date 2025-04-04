@@ -11,11 +11,7 @@ const CreateItemModal = ({ onClose, onAddItem }) => {
     const handleAdd = () => {
         if (itemName.trim() !== '' && itemDeadline.trim() !== '') {
             // Создаем объект с данными нового предмета
-            const newItem = {
-                name: itemName,
-                description: itemDescription,
-                deadline: itemDeadline,
-            };
+            const newItem = {name: itemName, description: itemDescription, deadline: itemDeadline,};
             onAddItem(newItem); // Передаем объект в родительский компонент
             setItemName(''); // Очищаем поля ввода
             setItemDescription('');

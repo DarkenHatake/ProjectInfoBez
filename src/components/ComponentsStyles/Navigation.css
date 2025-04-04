@@ -13,7 +13,20 @@
     z-index: 1000;
     padding: 0 120px;
 }
-
+.navigation-login-button{
+    width: 180px;
+    height: 60px;
+    background: #80FFE8;
+    border: 3px solid #80FFE8;
+    font-size: 20px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    will-change: background-color;
+    font-family: 'Roboto Mono', monospace;
+}
+.navigation-login-button:hover {
+    background: #00CCB3;
+}
 .nav-spacer {
     height: 80px;
     width: 100%;

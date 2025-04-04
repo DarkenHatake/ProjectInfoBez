@@ -45,9 +45,7 @@ const Object = () => {
                 <CreateItemModal onClose={handleCloseModal} onAddItem={handleAddItem} />
             )}
 
-            {isJoinModalOpen && (
-                <JoinSubject onClose={handleCloseJoin}/>
-            )}
+            {isJoinModalOpen && (<JoinSubject onClose={handleCloseJoin}/>)}
         </div>
     );
 };
