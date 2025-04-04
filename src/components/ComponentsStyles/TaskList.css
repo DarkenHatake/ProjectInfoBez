@@ -1,8 +1,8 @@
 .task-list {
     margin-top: 200px;
     width: 1032px;
+    margin-left: 444px;
     position: absolute;
-    left: 444px;
     font-family: 'Roboto Mono', monospace;
 }
 
@@ -20,20 +20,26 @@
 .task-headr {
     text-align: left;
 }
-
-.delete-button {
+.task-buttons{
+    width: 223px;
+    height: fit-content;
+    display: flex;
+}
+.task-delete-button {
     width: 104px;
     height: 31px;
     font-family: 'Roboto Mono', monospace;
     font-size: 16px;
+    padding: 5px 20px;
     background-color: transparent;
     border: 2px solid #EE8283; /* Прозрачный фон */
     border-radius: 5px; /* Скругленные углы */
 }
 
-.edit-button {
+.task-edit-button {
     width: 104px;
     height: 31px;
+    padding: 5px 17px;
     font-family: 'Roboto Mono', monospace;
     font-size: 16px;
     background-color: #a8ffa8;

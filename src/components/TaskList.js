@@ -13,8 +13,11 @@ const TaskList = ({ tasks, onEdit, onDelete }) => {
                             <p className="task-deadline-1">Дата выполнения: {task.deadlineStart}</p>
                             <p className="task-deadline-2">Дата сдачи: {task.deadlineEnd}</p>
                         </div>
-                        <button className="edit-button" onClick={() => onEdit(task)}>Изменить</button>
-                        <button className="delete-button" onClick={() => onDelete(task)}>Удалить</button>
+                        <div className="task-buttons">
+                            <button className="task-delete-button" onClick={() => onDelete(task)}>Удалить</button>
+                            <button className="task-edit-button" onClick={() => onEdit(task)}>Изменить</button>
+
+                        </div>
                     </li>
                 ))}
             </ul>

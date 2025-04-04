@@ -58,7 +58,7 @@ const EditTask = ({ task, onClose, onEdit }) => {
                 </div>
                 <div className="buttons">
                     <button className="cancel-btn" onClick={handleCancel}>Отмена</button>
-                    <button className="save-btn" onClick={handleSaveChanges}>Сохранить изменения</button>
+                    <button className="save-btn" onClick={handleSaveChanges}>Сохранить</button>
                 </div>
             </div>
         </div>
