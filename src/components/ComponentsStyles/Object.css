@@ -1,0 +1,122 @@
+/* Основные стили страницы */
+.object-page {
+    position: relative;
+    width: 100%;
+    min-height: 89vh;
+    background: #FFFFFF;
+    padding: 20px 384px 0 384px; /* Уменьшено расстояние сверху */
+    box-sizing: border-box;
+}
+
+/* Шапка страницы */
+.object-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    column-gap: 20px;
+}
+
+.object-title {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+/* Кнопки действий */
+.object-actions {
+    display: flex;
+    gap: 20px;
+    flex-wrap: nowrap;
+}
+
+.create-button,
+.join-button {
+    width: 208.84px;
+    height: 60px;
+    border-radius: 8px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 20px;
+    line-height: 26px;
+    color: #000000;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    background: #FFFFFF;
+    border: 2px solid transparent;
+}
+
+/* Индивидуальные стили рамок и ховеров */
+.create-button {
+    border-color: #80FFE8;
+}
+
+.create-button:hover {
+    background: #80FFE8;
+    color: #000000;
+}
+
+.join-button {
+    border-color: #FFAC81;
+}
+
+.join-button:hover {
+    background: #FFAC81;
+    color: #000000;
+}
+
+/* Адаптация */
+@media (max-width: 1600px) {
+    .object-page {
+        padding: 20px 200px 0 200px;
+        margin-bottom: 20px; /* Добавляем пространство снизу */
+    }
+}
+
+@media (max-width: 1200px) {
+    .object-page {
+        padding: 20px 100px 0 100px;
+    }
+}
+
+@media (max-width: 768px) {
+    .object-page {
+        padding:  20px 20px 0 20px;
+    }
+
+    .object-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .object-actions {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .create-button,
+    .join-button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .object-header {
+        grid-template-columns: 1fr;
+        row-gap: 20px;
+    }
+
+    .object-actions {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+}
+

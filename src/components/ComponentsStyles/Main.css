@@ -1,69 +1,97 @@
-/* Основной контейнер */
-
+/* Основной контейнер страницы */
 .main-container {
-    position: absolute;
-    width: 100%;
-    height: 100vh;
-    background: #ffffff;
-    padding: 20px;
-    box-sizing: border-box;
-    margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #ffffff;
+  min-height: 89vh;
+  overflow-x: hidden; /* Убираем горизонтальную прокрутку */
+  box-sizing: border-box;
+}
+
+/* Контейнер с ограниченной шириной */
+.content-wrapper {
+  width: 860px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Заголовок "Дашборд" */
+.dashboard-title {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  color: #000000;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* Контейнер для верхних рамок */
+.top-frames {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+/* Общие стили для рамок */
+.frame {
+  width: 420px;
+  height: 300px;
+  background: #ffffff;
+  border: 3px solid #80ffe8;
+  border-radius: 8px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0;
+  position: relative;
+}
+
+/* Заголовок внутри рамки */
+.frame-title {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  color: #000000;
+  margin: 0;
+  padding: 10px; /* Минимальный отступ от рамки */
+  align-self: flex-start;
+  text-align: left; /* Делаем текст левым */
+}
+
+/* Нижняя рамка, растянутая на два блока */
+.personal-tasks-frame {
+  width: 860px;
+  height: 200px;
+  margin-bottom: 20px;
+}
+
+/* Убираем прокрутку, если рамки помещаются */
+html, body {
+  overflow-y: auto;
+}
+
+/* Адаптивность */
+@media (max-width: 880px) {
+  .content-wrapper {
+      width: 90%;
+      padding: 0 10px;
   }
-  
-  /* Надпись "Дашборд" */
-  .dashboard-title {
-    position: absolute;
-    left: 330px; /* Сдвигаем ближе к левому краю */
-    top: 40px; /* Сдвигаем ближе к верхнему краю */
-    font-family: 'Roboto Mono', monospace;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 32px;
-    color: #000000;
-    margin: 0;
+
+  .top-frames {
+      flex-direction: column;
   }
-  
-  /* Общие стили для рамок */
+
   .frame {
-    position: absolute;
-    width: 400px; /* Уменьшили ширину */
-    height: 300px; /* Уменьшили высоту */
-    background: #ffffff;
-    border: 3px solid #80ffe8;
-    border-radius: 8px;
-    padding: 20px;
-    box-sizing: border-box;
+      width: 100%;
   }
-  
-  /* Заголовок внутри рамки */
-  .frame-title {
-    font-family: 'Roboto Mono', monospace;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 26px;
-    color: #000000;
-    margin: 0 0 20px 0;
-    text-align: left; /* Выравниваем текст по левому краю */
-  }
-  
-  /* Рамка "Предметы" */
-  .subjects-frame {
-    left: 330px; /* Сдвигаем ближе к левому краю */
-    top: 100px; /* Сдвигаем ниже заголовка "Дашборд" */
-  }
-  
-  /* Рамка "Выполнено за 2 недели" */
-  .completed-frame {
-    left: 750px; /* Сдвигаем вправо от первой рамки */
-    top: 100px; /* Та же высота, что и у первой рамки */
-  }
-  
-  /* Рамка "Персональные задачи" */
+
   .personal-tasks-frame {
-    left: 330px; /* Сдвигаем ближе к левому краю */
-    top: 420px; /* Сдвигаем ниже первых двух рамок */
-    width: 820px; /* Ширина как в Figma */
-    height: 200px; /* Высота как в Figma */
+      width: 100%;
+      margin-bottom: 20px; /* Добавляем пространство снизу */
   }
+}

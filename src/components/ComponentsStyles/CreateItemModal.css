@@ -4,7 +4,7 @@
     width: 450px; /* Уменьшили ширину */
     height: 380px;
     left: 50%;
-    top: 50%;
+    top: 40%;
     transform: translate(-50%, -50%);
     background: #ffffff;
     border: 3px solid #a8ffa8;

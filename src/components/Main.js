@@ -1,25 +1,25 @@
 import React from 'react';
-import './ComponentsStyles/Main.css'; // Подключаем стили
+import './ComponentsStyles/Main.css';
 
 const Main = () => {
     return (
         <div className="main-container">
-            {/* Надпись "Дашборд" */}
-            <h1 className="dashboard-title">Дашборд</h1>
+            <div className="content-wrapper">
+                <h1 className="dashboard-title">Дашборд</h1>
 
-            {/* Рамка "Предметы" */}
-            <div className="frame subjects-frame">
-                <h2 className="frame-title">Предметы:</h2>
-            </div>
+                <div className="top-frames">
+                    <div className="frame">
+                        <h2 className="frame-title">Предметы:</h2>
+                    </div>
 
-            {/* Рамка "Выполнено за 2 недели" */}
-            <div className="frame completed-frame">
-                <h2 className="frame-title">Выполнено за 2 недели:</h2>
-            </div>
+                    <div className="frame">
+                        <h2 className="frame-title">Выполнено за 2 недели:</h2>
+                    </div>
+                </div>
 
-            {/* Рамка "Персональные задачи" */}
-            <div className="frame personal-tasks-frame">
-                <h2 className="frame-title">Персональные задачи:</h2>
+                <div className="frame personal-tasks-frame">
+                    <h2 className="frame-title">Персональные задачи:</h2>
+                </div>
             </div>
         </div>
     );

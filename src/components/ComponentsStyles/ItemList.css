@@ -1,0 +1,157 @@
+.items-container {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    width: 100%;
+}
+
+.empty-message {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 18px;
+    color: #7E7979;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.item-card {
+    width: 100%;
+    background: #FFFFFF;
+    border: 3px solid #80FFE8;
+    border-radius: 8px;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.item-name {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 20px;
+    line-height: 26px;
+    color: #000000;
+    margin: 0;
+    text-align: left; /* Название по левому краю */
+}
+
+.item-badges {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.role-badge {
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 16px;
+    line-height: 21px;
+    color: #000000;
+}
+
+.role-badge.creator {
+    background: #A8FFA8;
+}
+
+.delete-button, .go-button {
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-family: 'Roboto Mono', monospace; /* Убедимся, что шрифт одинаков */
+    font-size: 16px;
+    line-height: 21px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center; /* Добавляем выравнивание текста в кнопках */
+}
+
+.delete-button {
+    background: #FFFFFF;
+    border: 2px solid #EE8283;
+    color: #000000;
+}
+
+.delete-button:hover {
+    background: #FFEBEB;
+}
+
+.go-button {
+    background: #A8FFA8;
+    border: none;
+    color: #000000;
+}
+
+.go-button:hover {
+    background: #80E080;
+}
+
+.item-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
+}
+
+.item-lesson {
+    display: inline-block;
+    text-align: left;
+}
+
+.item-details p {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 18px;
+    line-height: 26px;
+    color: #000000;
+    margin: 0;
+}
+
+/* Новый блок для выравнивания элементов "Создатель", "Удалить", "Перейти" */
+.item-footer {
+    display: flex;
+    justify-content: flex-start; /* Выравниваем элементы по левому краю */
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+}
+
+.item-footer .role-badge.creator {
+    flex-grow: 1; /* Чтобы "Создатель" оставался на левом краю */
+    text-align: left;
+}
+
+.delete-button, .go-button {
+    font-family: 'Roboto Mono', monospace; /* Унифицированный шрифт для кнопок */
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .item-header {
+        gap: 10px;
+    }
+    
+    .item-badges {
+        width: 100%;
+        justify-content: flex-start;
+    }
+    
+    .item-details {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .delete-button, .go-button {
+        font-size: 14px; /* Уменьшаем кнопки */
+        padding: 5px 8px;
+    }
+
+    /* На маленьких экранах, оставляем элементы на одной строке */
+    .item-footer {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+}

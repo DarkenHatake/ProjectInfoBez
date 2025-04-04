@@ -1,11 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './ComponentsStyles/JoinSubject.css';
 
-const JoinSubject = () => {
-    const [isVisible, setIsVisible] = useState(true);
-
-    if (!isVisible) return null;
-
+const JoinSubject = ({ onClose }) => {
     return (
         <div className="join-subject-wrapper">
             <div className="join-subject-container">
@@ -20,7 +16,7 @@ const JoinSubject = () => {
                 </div>
 
                 <div className="buttons-container">
-                    <button className="back-button" onClick={() => setIsVisible(false)}>Назад</button>
+                    <button className="back-button" onClick={onClose}>Назад</button>
                     <button className="join-button">Присоединиться</button>
                 </div>
             </div>
