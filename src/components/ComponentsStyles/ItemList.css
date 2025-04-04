@@ -1,11 +1,11 @@
-.item-list {
+.itemlist-item-list {
     margin-top: 200px;
     width: 1032px;
     position: absolute;
     left: 444px;
 }
 
-.item {
+.itemlist-item {
     position: relative;
     width: 100%;
     height: auto; /* Изменено на auto для адаптивности */
@@ -18,14 +18,14 @@
     padding: 10px; /* Добавляем немного внутреннего отступа */
 }
 
-.item-name {
+.itemlist-item-name {
     margin-top: 10px;
 
 }
-.item-headr{
+.itemlist-item-headr{
     text-align: left;
 }
-.delete-button {
+.itemlist-delete-button {
     width: 104px;
     height: 31px;
     padding: 5px 20px;
@@ -37,7 +37,7 @@
     cursor: pointer;
     margin-left: 20px; /* Отступ слева от заголовка */
 }
-.go-button {
+.itemlist-go-button {
     width: 104px;
     height: 31px;
     padding: 5px 20px;
@@ -49,9 +49,9 @@
     cursor: pointer;
     margin-left: 20px; /* Отступ слева от заголовка */
 }
-.item-description{
+.itemlist-item-description{
     margin-top: 30px;
 }
-.item-deadline {
+.itemlist-item-deadline {
     margin-top: 10px; /* Отступ сверху для описания и дедлайна */
 }

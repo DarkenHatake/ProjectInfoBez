@@ -25,7 +25,7 @@ const CreateTaskForm = ({ onClose, onCreate }) => {
     };
 
     return (
-        <div className="create-task-container">
+        <div className="createtaskform-create-task-container">
             <h2>Создать задачу</h2>
             <input
                 type="text"
@@ -38,7 +38,7 @@ const CreateTaskForm = ({ onClose, onCreate }) => {
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
             />
-            <div className="date-fields">
+            <div className="createtaskform-date-fields">
                 <input
                     type="date"
                     value={deadlineStart}
@@ -50,9 +50,9 @@ const CreateTaskForm = ({ onClose, onCreate }) => {
                     onChange={(e) => setDeadlineEnd(e.target.value)}
                 />
             </div>
-            <div className="buttons">
-                <button className="cancel-btn" onClick={onClose}>Отмена</button>
-                <button className="create-btn" onClick={handleSubmit}>Создать задачу</button>
+            <div className="createtaskform-buttons">
+                <button className="createtaskform-cancel-btn" onClick={onClose}>Отмена</button>
+                <button className="createtaskform-create-btn" onClick={handleSubmit}>Создать задачу</button>
             </div>
         </div>
     );

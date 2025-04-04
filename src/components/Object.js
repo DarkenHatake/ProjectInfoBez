@@ -34,9 +34,9 @@ const Object = () => {
     };
     return (
         <div>
-            <h1 className="object-title">Предметы</h1>
-            <button className="create-item" onClick={handleOpenModal}>Создать предмет</button>
-            <button className="join" onClick={handleOpenJoin}>Присоединиться</button>
+            <h1 className="object-object-title">Предметы</h1>
+            <button className="object-create-item" onClick={handleOpenModal}>Создать предмет</button>
+            <button className="object-join" onClick={handleOpenJoin}>Присоединиться</button>
 
             {/* Теперь передаем onDelete */}
             <ItemList items={items} onDelete={handleDeleteItem} />

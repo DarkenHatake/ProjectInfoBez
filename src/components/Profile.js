@@ -8,20 +8,20 @@ const Profile = () => {
                 {/* Шапка с заголовком и кнопкой */}
                 <div className="profile-header">
                     <h1 className="profile-title">Профиль</h1>
-                    <button className="edit-button">Редактировать</button>
+                    <button className="profile-edit-button">Редактировать</button>
                 </div>
                 
                 {/* Рамка с данными */}
                 <div className="profile-card">
-                    <div className="user-data">
-                        <div className="data-row">
-                            <span className="data-label">Username:</span>
+                    <div className="profile-user-data">
+                        <div className="profile-data-row">
+                            <span className="profile-data-label">Username:</span>
                         </div>
-                        <div className="data-row">
-                            <span className="data-label">Email:</span>
+                        <div className="profile-data-row">
+                            <span className="profile-data-label">Email:</span>
                         </div>
-                        <div className="data-row">
-                            <span className="data-label">Password:</span>
+                        <div className="profile-data-row">
+                            <span className="profile-data-label">Password:</span>
                         </div>
                     </div>
                 </div>
