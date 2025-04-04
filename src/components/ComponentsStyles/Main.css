@@ -1,5 +1,5 @@
 /* Основной контейнер страницы */
-.main-container {
+.main-main-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,14 +10,14 @@
 }
 
 /* Контейнер с ограниченной шириной */
-.content-wrapper {
+.main-content-wrapper {
   width: 860px;
   display: flex;
   flex-direction: column;
 }
 
 /* Заголовок "Дашборд" */
-.dashboard-title {
+.main-dashboard-title {
   font-family: 'Roboto Mono', monospace;
   font-weight: 400;
   font-size: 24px;
@@ -28,14 +28,14 @@
 }
 
 /* Контейнер для верхних рамок */
-.top-frames {
+.main-top-frames {
   display: flex;
   gap: 20px;
   margin-bottom: 20px;
 }
 
 /* Общие стили для рамок */
-.frame {
+.main-frame {
   width: 420px;
   height: 300px;
   background: #ffffff;
@@ -51,7 +51,7 @@
 }
 
 /* Заголовок внутри рамки */
-.frame-title {
+.main-frame-title {
   font-family: 'Roboto Mono', monospace;
   font-weight: 400;
   font-size: 24px;
@@ -64,10 +64,19 @@
 }
 
 /* Нижняя рамка, растянутая на два блока */
-.personal-tasks-frame {
+.main-personal-tasks-frame {
   width: 860px;
   height: 200px;
-  margin-bottom: 20px;
+  background: #ffffff;
+  border: 3px solid #80ffe8;
+  border-radius: 8px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0;
+  position: relative;
 }
 
 /* Убираем прокрутку, если рамки помещаются */
@@ -77,20 +86,20 @@ html, body {
 
 /* Адаптивность */
 @media (max-width: 880px) {
-  .content-wrapper {
+  .main-content-wrapper {
       width: 90%;
       padding: 0 10px;
   }
 
-  .top-frames {
+  .main-top-frames {
       flex-direction: column;
   }
 
-  .frame {
+  .main-frame {
       width: 100%;
   }
 
-  .personal-tasks-frame {
+  .main-personal-tasks-frame {
       width: 100%;
       margin-bottom: 20px; /* Добавляем пространство снизу */
   }

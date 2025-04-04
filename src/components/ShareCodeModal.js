@@ -8,25 +8,25 @@ const ShareCodeModal = ({ code, onClose }) => {
     };
 
     return (
-        <div className="share-modal-container">
-            <div className="share-modal-content">
-                <h2 className="share-modal-title">Поделиться предметом</h2>
+        <div className="sharecodemodal-share-modal-container">
+            <div className="sharecodemodal-share-modal-content">
+                <h2 className="sharecodemodal-share-modal-title">Поделиться предметом</h2>
                 
-                <div className="code-input-group">
-                    <label className="code-label">Код</label>
+                <div className="sharecodemodal-code-input-group">
+                    <label className="sharecodemodal-code-label">Код</label>
                     <input 
                         type="text" 
                         value={code} 
                         readOnly 
-                        className="code-input"
+                        className="sharecodemodal-code-input"
                     />
                 </div>
     
-                <div className="modal-buttons">
-                    <button className="back-button" onClick={onClose}>
+                <div className="sharecodemodal-modal-buttons">
+                    <button className="sharecodemodal-back-button" onClick={onClose}>
                         Назад
                     </button>
-                    <button className="copy-button" onClick={handleCopy}>
+                    <button className="sharecodemodal-copy-button" onClick={handleCopy}>
                         Скопировать
                     </button>
                 </div>

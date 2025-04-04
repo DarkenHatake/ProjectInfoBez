@@ -1,5 +1,5 @@
 /* Центровка без overlay */
-.join-subject-wrapper {
+.joinsubject-join-subject-wrapper {
   position: fixed;
   top: 0;
   left: 0;
@@ -13,7 +13,7 @@
 
 /* Основной контейнер формы */
 /* join-subject-container — правим отступы */
-.join-subject-container {
+.joinsubject-join-subject-container {
   width: 480px;
   height: 240px;
   background: #ffffff;
@@ -27,7 +27,7 @@
 }
 
 /* Заголовок формы */
-.form-title {
+.joinsubject-form-title {
   font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -40,7 +40,7 @@
 }
 
 /* Контейнер для поля ввода */
-.input-container {
+.joinsubject-input-container {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -50,7 +50,7 @@
 }
 
 /* input-field — как в макете */
-.input-field {
+.joinsubject-input-field {
   width: 90%;
   height: 50px;
   background: #ffffff;
@@ -64,19 +64,19 @@
   box-sizing: border-box;
 }
 
-.input-field::placeholder {
+.joinsubject-input-field::placeholder {
   color: #7e7979;
 }
 
 /* Контейнер для кнопок */
-.buttons-container {
+.joinsubject-buttons-container {
   display: flex;
   justify-content: center;
   gap: 20px;
 }
 
 /* Кнопка "Назад" */
-.back-button {
+.joinsubject-back-button {
   width: 160px;
   height: 60px;
   background: #ffffff;
@@ -91,12 +91,12 @@
   cursor: pointer;
 }
 
-.back-button:hover {
+.joinsubject-back-button:hover {
   background: #ffe0e0;
 }
 
 /* Кнопка "Присоединиться" */
-.join-button {
+.joinsubject-join-button {
   width: 240px;
   height: 60px;
   background: #80ffe8;
@@ -111,6 +111,6 @@
   cursor: pointer;
 }
 
-.join-button:hover {
+.joinsubject-join-button:hover {
   background: #60e0c0;
 }

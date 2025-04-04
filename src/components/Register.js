@@ -13,6 +13,7 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
   const [error, setError] = useState('');
+  const [isVisible, setIsVisible] = useState(true); // <-- управление видимостью окна
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,34 +27,43 @@ const Register = () => {
     e.preventDefault();
     setError('');
 
-    if (formData.password !== formData.repeatPassword) {
+    const { email, username, password, repeatPassword } = formData;
+
+    if (!email || !username || !password || !repeatPassword) {
+      setError('Пожалуйста, заполните все поля');
+      return;
+    }
+
+    if (password !== repeatPassword) {
       setError('Пароли не совпадают');
       return;
     }
 
     try {
-      const response = await registerUser(formData.email, formData.username, formData.password);
+      const response = await registerUser(email, username, password);
       console.log('Успешная регистрация:', response.data);
+      // можно скрыть окно после успешной регистрации, если нужно:
+      // setIsVisible(false);
     } catch (err) {
       setError(err.response?.data?.message || 'Ошибка регистрации');
     }
   };
 
+  if (!isVisible) return null; // <-- компонент больше не отображается
+
   return (
-    <div className={`register-container ${error ? 'with-error' : ''}`}>
+    <div className={`register-container ${error ? 'register-with-error' : ''}`}>
       <div className="register-header">
         <h2>Регистрация</h2>
-        <p className="switch-text">Есть аккаунт?</p>
+        <p className="register-switch-text">Есть аккаунт?</p>
       </div>
-      
+
       {error && (
-        <div className="error-message">
-          {error}
-        </div>
+        <div className="register-error-message">{error}</div>
       )}
 
       <form onSubmit={handleSubmit}>
-        <div className="input-group">
+        <div className="register-input-group">
           <input
             type="email"
             name="email"
@@ -63,8 +73,8 @@ const Register = () => {
             required
           />
         </div>
-        
-        <div className="input-group">
+
+        <div className="register-input-group">
           <input
             type="text"
             name="username"
@@ -74,8 +84,8 @@ const Register = () => {
             required
           />
         </div>
-        
-        <div className="input-group password-input">
+
+        <div className="register-input-group register-password-input">
           <input
             type={showPassword ? 'text' : 'password'}
             name="password"
@@ -85,15 +95,15 @@ const Register = () => {
             required
             minLength="6"
           />
-          <span 
-            className="password-toggle" 
+          <span
+            className="register-password-toggle"
             onClick={() => setShowPassword(!showPassword)}
           >
             {showPassword ? <FaEye /> : <FaEyeSlash />}
           </span>
         </div>
-        
-        <div className="input-group password-input">
+
+        <div className="register-input-group register-password-input">
           <input
             type={showRepeatPassword ? 'text' : 'password'}
             name="repeatPassword"
@@ -102,16 +112,20 @@ const Register = () => {
             onChange={handleChange}
             required
           />
-          <span 
-            className="password-toggle" 
+          <span
+            className="register-password-toggle"
             onClick={() => setShowRepeatPassword(!showRepeatPassword)}
           >
             {showRepeatPassword ? <FaEye /> : <FaEyeSlash />}
           </span>
         </div>
-        
-        <div className="buttons">
-          <button type="button" className="back-button">
+
+        <div className="register-buttons">
+          <button
+            type="button"
+            className="register-back-button"
+            onClick={() => setIsVisible(false)} // <-- скрыть компонент
+          >
             Назад
           </button>
           <button type="submit" className="register-button">

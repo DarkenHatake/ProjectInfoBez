@@ -25,9 +25,9 @@ const CreateItemModal = ({ onClose, onAddItem }) => {
     };
 
     return (
-        <div className="create-item-modal">
+        <div className="createitemmodal-create-item-modal">
           <h2>Создание предмета</h2>
-          <div className="input-group">
+          <div className="createitemmodal-input-group">
             <input
               type="text"
               placeholder="Название"
@@ -35,7 +35,7 @@ const CreateItemModal = ({ onClose, onAddItem }) => {
               onChange={(e) => setItemName(e.target.value)}
             />
           </div>
-          <div className="input-group">
+          <div className="createitemmodal-input-group">
             <textarea
               placeholder="Описание"
               value={itemDescription}
@@ -43,16 +43,16 @@ const CreateItemModal = ({ onClose, onAddItem }) => {
               rows="3"
             />
           </div>
-          <div className="input-group">
+          <div className="createitemmodal-input-group">
             <input
               type="date"
               value={itemDeadline}
               onChange={(e) => setItemDeadline(e.target.value)}
             />
           </div>
-          <div className="buttons">
-            <button className="back-button" onClick={onClose}>Назад</button>
-            <button className="add-button" onClick={handleAdd}>Добавить</button>
+          <div className="createitemmodal-buttons">
+            <button className="createitemmodal-back-button" onClick={onClose}>Назад</button>
+            <button className="createitemmodal-add-button" onClick={handleAdd}>Добавить</button>
           </div>
         </div>
       );

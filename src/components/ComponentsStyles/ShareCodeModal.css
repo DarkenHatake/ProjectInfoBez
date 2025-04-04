@@ -1,5 +1,5 @@
 /* Основной контейнер */
-.share-modal-container {
+.sharecodemodal-share-modal-container {
     position: fixed;
     top: 0;
     left: 0;
@@ -11,7 +11,7 @@
 }
 
 /* Контент модального окна */
-.share-modal-content {
+.sharecodemodal-share-modal-content {
     position: relative;
     width: 480px;
     height: 240px;
@@ -26,7 +26,7 @@
 }
 
 /* Заголовок */
-.share-modal-title {
+.sharecodemodal-share-modal-title {
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -37,14 +37,14 @@
 }
 
 /* Группа с кодом */
-.code-input-group {
+.sharecodemodal-code-input-group {
     display: flex;
     align-items: center;
     margin-bottom: 40px;
     width: 450px;
 }
 
-.code-label {
+.sharecodemodal-code-label {
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -56,7 +56,7 @@
     width: 50px; /* Фиксированная ширина для выравнивания */
 }
 
-.code-input {
+.sharecodemodal-code-input {
     width: 350px;
     height: 35px;
     background: #FFFFFF;
@@ -72,7 +72,7 @@
 }
 
 /* Кнопки */
-.modal-buttons {
+.sharecodemodal-modal-buttons {
     display: flex;
     justify-content: space-between;
     gap: 20px;
@@ -81,7 +81,7 @@
     height: 55px;
 }
 
-.back-button {
+.sharecodemodal-back-button {
     flex: 1;
     height: 50px;
     background: #FFFFFF;
@@ -97,11 +97,11 @@
     transition: all 0.3s ease;
 }
 
-.back-button:hover {
+.sharecodemodal-back-button:hover {
     background-color: #FFEAED;
 }
 
-.copy-button {
+.sharecodemodal-copy-button {
     flex: 1;
     height: 50px;
     background: #80FFE8;
@@ -117,6 +117,6 @@
     transition: all 0.3s ease;
 }
 
-.copy-button:hover {
+.sharecodemodal-copy-button:hover {
     background: #00CCB3;
 }

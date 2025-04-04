@@ -1,5 +1,5 @@
 /* Центрируем контейнер */
-.login-container {
+.login-login-container {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -14,21 +14,21 @@
 }
 
 /* Заголовок */
-.login-header {
+.login-login-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.login-title {
+.login-login-title {
   font-family: 'Inter', sans-serif;
   font-size: 24px;
   color: #000000;
   margin: 0;
 }
 
-.login-header .switch-text {
+.login-login-header .login-switch-text {
   font-family: 'Inter', sans-serif;
   font-size: 24px;
   color: #80b3ff;
@@ -36,17 +36,17 @@
   margin: 0;
 }
 
-.login-header .switch-text:hover {
+.login-login-header .login-switch-text:hover {
   text-decoration: underline;
 }
 
 /* Поля ввода */
-.input-group {
+.login-input-group {
   margin-bottom: 15px;
   position: relative;
 }
 
-.input-group input {
+.login-input-group input {
   width: 100%; /* Одинаковая ширина */
   height: 40px;
   padding: 10px;
@@ -60,17 +60,17 @@
 }
 
 /* Поле пароля */
-.password-input {
+.login-password-input {
   position: relative;
 }
 
-.password-input input {
+.login-password-input input {
   width: 100%; /* Теперь совпадает с полем логина */
   padding-right: 45px;
 }
 
 /* Иконка глаза */
-.password-toggle {
+.login-password-toggle {
   position: absolute;
   right: 10px;
   top: 50%;
@@ -84,19 +84,19 @@
   justify-content: center;
 }
 
-.password-toggle:hover {
+.login-password-toggle:hover {
   color: #000000;
 }
 
 /* Кнопки */
-.buttons {
+.login-buttons {
   display: flex;
   justify-content: space-between;
   gap: 15px;
   margin-top: 20px;
 }
 
-.buttons button {
+.login-buttons button {
   flex: 1;
   padding: 10px 15px;
   font-family: 'Roboto Mono', monospace;
@@ -107,22 +107,22 @@
 }
 
 /* Кнопка "Назад" */
-.buttons .back-button {
+.login-buttons .login-back-button {
   background: #ffffff;
   border: 2px solid #ff0011;
 }
 
-.buttons .back-button:hover {
+.login-buttons .login-back-button:hover {
   background: #ff0011;
   color: #ffffff;
 }
 
 /* Кнопка "Войти" */
-.buttons .login-button {
+.login-buttons .login-login-button {
   background: #80ffe8;
   border: none;
 }
 
-.buttons .login-button:hover {
+.login-buttons .login-login-button:hover {
   background: #00ccb3;
 }

@@ -1,4 +1,4 @@
-.object-title {
+.object-object-title {
     /* Предметы */
     position: absolute;
     width: 116px;
@@ -13,7 +13,7 @@
     /* identical to box height */
     color: #000000;
 }
-.create-item {
+.object-create-item {
     position: absolute;
     width: 223px;
     height: 60px;
@@ -29,14 +29,14 @@
     cursor: pointer; /* Указатель мыши при наведении */
     transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease; /* Плавные переходы */
 }
-.create-item:hover {
+.object-create-item:hover {
     background-color: #ccc; /* Голубой фон при наведении */
     color: black; /* Белый цвет текста при наведении */
 }
-.create-item:active {
+.object-create-item:active {
     transform: scale(0.98); /* Легкое уменьшение кнопки */
 }
-.create-item:disabled {
+.object-create-item:disabled {
     background-color: transparent; /* Прозрачный фон */
     color: #ccc; /* Серый текст */
     border-color: #ccc; /* Серый цвет рамки */
@@ -44,7 +44,7 @@
 }
 
 
-.join {
+.object-join {
     position: absolute;
     width: 208.84px;
     height: 60px;
@@ -60,14 +60,14 @@
     cursor: pointer; /* Указатель мыши при наведении */
     transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease; /* Плавные переходы */
 }
-.create-join:hover {
+.object-create-join:hover {
     background-color: #ccc; /* Голубой фон при наведении */
     color: black; /* Белый цвет текста при наведении */
 }
-.create-join:active {
+.object-create-join:active {
     transform: scale(0.98); /* Легкое уменьшение кнопки */
 }
-.create-join:disabled {
+.object-create-join:disabled {
     background-color: transparent; /* Прозрачный фон */
     color: #ccc; /* Серый текст */
     border-color: #ccc; /* Серый цвет рамки */

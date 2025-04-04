@@ -1,92 +1,96 @@
-.edit-task-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    position: absolute;
-    font-family: 'Roboto Mono', monospace;
+.edittask-edit-task-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto Mono', monospace;
+  margin-top: 50px;
 }
-  
-.edit-task-container {
-    width: 480px;
-    padding: 30px;
-    background: #ffffff;
-    border: 3px solid #a8ffa8;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+
+.edittask-edit-task-container {
+  width: 480px;
+  padding: 30px;
+  background: #ffffff;
+  border: 3px solid #a8ffa8;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-sizing: border-box;
 }
-  
-.form-title {
-    font-family: 'Inter', sans-serif;
-    font-size: 20px;
-    color: #000000;
-    text-align: center;
+
+.edittask-form-title {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 22px;
+  font-weight: 400;
+  color: #000000;
+  text-align: center;
 }
-  
-.input-container {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+
+.edittask-input-field,
+.edittask-textarea-field {
+  border: 2px solid #000000;
+  border-radius: 4px;
+  padding: 8px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
 }
-  
-.input-field,
-.textarea-field {
-    border: 2px solid #000000;
-    border-radius: 4px;
-    padding: 8px;
-    font-family: 'Roboto Mono', monospace;
-    font-size: 16px;
+
+.edittask-textarea-field {
+  resize: none;
+  height: 70px;
 }
-  
-.textarea-field {
-    resize: none;
-    height: 70px;
+
+.edittask-input-field::placeholder,
+.edittask-textarea-field::placeholder {
+  color: #888;
+  font-size: 14px;
 }
-  
-.input-field::placeholder,
-.textarea-field::placeholder {
-    color: #888;
-    font-size: 14px;
+
+/* Изменено: даты теперь вертикально и тоже шириной 100% */
+.edittask-date-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
-  
-.buttons-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
+
+/* Кнопки с отступом между ними */
+.edittask-butons-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 10px;
 }
-  
-.cancel-button {
-    width: 150px;
-    height: 60px;
-    background: #ffffff;
-    border: 2px solid #ff0011;
-    border-radius: 8px;
-    font-family: 'Roboto Mono', monospace;
-    font-size: 20px;
-    cursor: pointer;
-    transition: background 0.3s;
+
+.edittask-cancel-button,
+.edittask-save-button {
+  flex: 1;
+  height: 60px;
+  border-radius: 8px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 0.3s;
 }
-  
-.cancel-button:hover {
-    background: #ff0011;
-    color: #ffffff;
+
+/* Отмена */
+.edittask-cancel-button {
+  background: #ffffff;
+  border: 2px solid #ff0011;
 }
-  
-.edit-button {
-    width: 150px;
-    height: 60px;
-    background: #80ffe8;
-    border: none;
-    border-radius: 8px;
-    font-family: 'Roboto Mono', monospace;
-    font-size: 20px;
-    cursor: pointer;
-    transition: background 0.3s;
+
+.edittask-cancel-button:hover {
+  background: #ff0011;
+  color: #ffffff;
 }
-  
-.edit-button:hover {
-    background: #66d6c4; /* чуть темнее чем #80ffe8 */
+
+/* Сохранить */
+.edittask-save-button {
+  background: #80ffe8;
+  border: none;
 }
-  
+
+.edittask-save-button:hover {
+  background: #66d6c4;
+}

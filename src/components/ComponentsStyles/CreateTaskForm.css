@@ -1,4 +1,4 @@
-.create-task-container {
+.createtaskform-create-task-container {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -14,7 +14,7 @@
     align-items: stretch; /* Растягиваем элементы на всю ширину */
 }
 
-.create-task-container h2 {
+.createtaskform-create-task-container h2 {
     font-family: 'Roboto Mono', monospace;
     font-weight: 400;
     font-size: 20px;
@@ -23,9 +23,9 @@
 }
 
 /* Общие стили для всех инпутов и textarea */
-.create-task-container input[type="text"],
-.create-task-container textarea,
-.create-task-container input[type="date"] {
+.createtaskform-create-task-container input[type="text"],
+.createtaskform-create-task-container textarea,
+.createtaskform-create-task-container input[type="date"] {
     width: 100%; /* Ширина 100% от родительского контейнера */
     margin-bottom: 15px;
     padding: 10px;
@@ -37,30 +37,30 @@
     box-sizing: border-box; /* Учитываем padding и border в ширине */
 }
 
-.create-task-container textarea {
+.createtaskform-create-task-container textarea {
     resize: none;
     height: 70px;
 }
 
-.date-fields {
+.createtaskform-date-fields {
     display: flex;
     flex-direction: column; /* Элементы друг под другом */
     gap: 10px;
     width: 100%; /* Ширина 100% от родительского контейнера */
 }
 
-.date-fields input[type="date"] {
+.createtaskform-date-fields input[type="date"] {
     width: 100%; /* Ширина 100% от родительского контейнера */
 }
 
-.buttons {
+.createtaskform-buttons {
     display: flex;
     justify-content: space-between;
     width: 100%;
     margin-top: 20px;
 }
 
-.create-btn, .cancel-btn {
+.createtaskform-create-btn, .createtaskform-cancel-btn {
     width: 48%;
     height: 50px;
     font-family: 'Roboto Mono', monospace;
@@ -71,21 +71,21 @@
     transition: 0.3s;
 }
 
-.create-btn {
+.createtaskform-create-btn {
     background: #80FFE8;
 }
 
-.create-btn:hover {
+.createtaskform-create-btn:hover {
     background: #5cd6c4;
 }
 
-.cancel-btn {
+.createtaskform-cancel-btn {
     background: white;
     border: 2px solid red;
     color: red;
 }
 
-.cancel-btn:hover {
+.createtaskform-cancel-btn:hover {
     background: red;
     color: white;
 }
