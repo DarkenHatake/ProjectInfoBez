@@ -5,7 +5,7 @@ import './ComponentsStyles/Navigation.css';
 
 const Navigation = () => {
     const [isModalLoginOpen, setModalLoginOpen] = useState(false);
-    const key = 1;
+    const key = 0;
     const handleOpenModalLogin = () => {
         setModalLoginOpen(true);
     };
