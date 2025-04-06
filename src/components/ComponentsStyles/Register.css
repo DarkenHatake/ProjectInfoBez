@@ -135,7 +135,10 @@
 .password-toggle:hover {
   color: #000000;
 }
-
+.register-switch-text{
+  background: white;
+  border: 3px solid white;
+}
 .register-error-message {
   padding: 10px;
   margin: 0 0 15px 0; /* Улучшенные отступы */

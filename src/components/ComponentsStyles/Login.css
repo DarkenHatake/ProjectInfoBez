@@ -117,7 +117,10 @@
   background: #ff0011;
   color: #ffffff;
 }
-
+.login-switch-text{
+  background: white;
+  border: 3px solid white;
+}
 /* Кнопка "Войти" */
 .login-buttons .login-login-button {
   background: #80ffe8;

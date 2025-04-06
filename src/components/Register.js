@@ -56,7 +56,7 @@ const Register = ({onLogin}) => {
     <div className={`register-container ${error ? 'register-with-error' : ''}`}>
       <div className="register-header">
         <h2>Регистрация</h2>
-        <button onClick={onLogin}><p className="register-switch-text">Есть аккаунт?</p></button>
+        <button className="register-switch-text" onClick={onLogin}>Есть аккаунт?</button>
       </div>
 
       {error && (

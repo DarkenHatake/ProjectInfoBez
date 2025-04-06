@@ -24,7 +24,7 @@ const Login = ({ onClose, onRegister, onAuthed }) => { // Принимаем onC
       <div className="login-login-container">
         <div className="login-login-header">
           <p className="login-login-title">Авторизация</p>
-          <button onClick={onRegister}><p className="login-switch-text">Нет аккаунта?</p></button>
+          <button className="login-switch-text" onClick={onRegister}>Нет аккаунта?</button>
         </div>
         <form onSubmit={handleSubmit}>
           <div className="login-input-group">
