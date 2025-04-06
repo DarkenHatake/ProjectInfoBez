@@ -2,13 +2,16 @@ import React from 'react';
 import './ComponentsStyles/ItemList.css'; // Импортируйте CSS-файл, если он есть
 
 const ItemList = ({ items, onDelete }) => {
+    if (items === null || items === undefined) {
+        items = []
+    }
     return (
         <div className="itemlist-item-list-container">
             <ul className="itemlist-item-list">
                 {items.map((item, index) => (
                     <li key={index} className="itemlist-item">
                         <div className="itemlist-item-headr">
-                            <h3 className="itemlist-item-name">{item.name}</h3>
+                            <h3 className="itemlist-item-name">{item.title}</h3>
                             {item.description && (
                                 <p className="itemlist-item-description"><strong>Описание:</strong> {item.description}</p>
                             )}

@@ -1,18 +1,37 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import Login from './Login';
 import './ComponentsStyles/Navigation.css';
+import Register from "./Register";
 
 const Navigation = () => {
+    useEffect((isAuthed) => {
+        var token = localStorage.getItem('token');
+        setAuthed(!!token)
+        console.log(isAuthed);
+    }, []);
     const [isModalLoginOpen, setModalLoginOpen] = useState(false);
-    const key = 0;
+    const [isModalRegisterOpen, setModalRegisterOpen] = useState(false);
+    const [isAuthed, setAuthed] = useState(false);
+    const handleOpenModalRegister = () => {
+        setModalLoginOpen(false);
+        setModalRegisterOpen(true)
+    }
+    const handleCloseModalRegister = () => {
+        setModalRegisterOpen(false)
+    }
     const handleOpenModalLogin = () => {
         setModalLoginOpen(true);
+        setModalRegisterOpen(false)
     };
 
     const handleCloseModalLogin = () => {
         setModalLoginOpen(false);
     };
+
+    const onAuthed = () => {
+        setAuthed(true);
+    }
 
     return (
         <>
@@ -25,13 +44,14 @@ const Navigation = () => {
 
                 </div>
                 <div className="nav-right-group">
-                    {key === 1 ? (
+                    {!isAuthed ? (
                         // Оставь пустое место для кода
                         <button className="navigation-login-button" onClick={handleOpenModalLogin}>Авторизация</button>
                     ) : (
                         <NavLink to="/profile" text="Профиль" profile />
                     )}
-                    {isModalLoginOpen && (<Login onClose={handleCloseModalLogin}/>)}
+                    {isModalLoginOpen && (<Login onClose={handleCloseModalLogin} onRegister={handleOpenModalRegister} onAuthed={onAuthed} />)}
+                    {isModalRegisterOpen && (<Register onClose={handleCloseModalRegister} onLogin={handleOpenModalLogin} />)}
                 </div>
             </div>
             <div className="nav-spacer"></div>

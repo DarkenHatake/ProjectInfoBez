@@ -3,7 +3,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import './ComponentsStyles/Register.css';
 import { registerUser } from '../api';
 
-const Register = () => {
+const Register = ({onLogin}) => {
   const [formData, setFormData] = useState({
     email: '',
     username: '',
@@ -42,6 +42,7 @@ const Register = () => {
     try {
       const response = await registerUser(email, username, password);
       console.log('Успешная регистрация:', response.data);
+      onLogin();
       // можно скрыть окно после успешной регистрации, если нужно:
       // setIsVisible(false);
     } catch (err) {
@@ -55,7 +56,7 @@ const Register = () => {
     <div className={`register-container ${error ? 'register-with-error' : ''}`}>
       <div className="register-header">
         <h2>Регистрация</h2>
-        <p className="register-switch-text">Есть аккаунт?</p>
+        <button onClick={onLogin}><p className="register-switch-text">Есть аккаунт?</p></button>
       </div>
 
       {error && (
