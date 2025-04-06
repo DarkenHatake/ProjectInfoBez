@@ -3,7 +3,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import './ComponentsStyles/Login.css';
 import { loginUser } from '../api'; // Импортируем функцию запроса
 
-const Login = ({ onClose }) => { // Принимаем onClose через пропсы
+const Login = ({ onClose, onRegister, onAuthed }) => { // Принимаем onClose через пропсы
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -12,7 +12,9 @@ const Login = ({ onClose }) => { // Принимаем onClose через про
     e.preventDefault();
     try {
       const response = await loginUser(login, password);
+      localStorage.setItem('token', response.data.JWT);
       console.log('Ответ сервера:', response.data);
+      onAuthed();
     } catch (error) {
       console.error('Ошибка авторизации:', error);
     }
@@ -22,7 +24,7 @@ const Login = ({ onClose }) => { // Принимаем onClose через про
       <div className="login-login-container">
         <div className="login-login-header">
           <p className="login-login-title">Авторизация</p>
-          <p className="login-switch-text">Нет аккаунта?</p>
+          <button onClick={onRegister}><p className="login-switch-text">Нет аккаунта?</p></button>
         </div>
         <form onSubmit={handleSubmit}>
           <div className="login-input-group">

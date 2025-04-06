@@ -1,10 +1,20 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import CreateItemModal from './CreateItemModal';
 import ItemList from './ItemList';
 import JoinSubject from './JoinSubject';
 import './ComponentsStyles/Object.css';
+import {createSubject, getSubjects} from "../api";
 
 const Object = () => {
+
+    useEffect( () => {
+        async function fetchData() {
+            const responceSub = await getSubjects()
+            setItems(responceSub.data)
+            console.log(responceSub.data)
+        }
+        fetchData()
+    }, []);
     const [isModalOpen, setModalOpen] = useState(false);
     const [isJoinModalOpen, setIsJoinModalOpen] = useState(false);
     const [items, setItems] = useState([]);
@@ -17,8 +27,12 @@ const Object = () => {
         setModalOpen(false);
     };
 
-    const handleAddItem = (newItem) => {
-        setItems((prevItems) => [...prevItems, newItem]);
+    const handleAddItem = async (title, description, deadline) => {
+        const response = await createSubject(title, description, deadline);
+        console.log(response);
+        const responceSub = await getSubjects()
+        setItems(responceSub.data)
+        console.log(responceSub.data);
     };
 
     // Новая функция для удаления предмета
