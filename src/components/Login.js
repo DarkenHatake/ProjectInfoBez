@@ -48,10 +48,8 @@ const Login = ({ onClose, onRegister, onAuthed }) => { // Принимаем onC
           </div>
           <div className="login-buttons">
             {/* Кнопка "Назад" вызывает функцию onClose */}
-            <button type="button" className="login-back-button" onClick={onClose}>
-              Назад
-            </button>
-            <button type="submit" className="login-button">Войти</button>
+            <button type="button" className="login-back-button" onClick={onClose}>Назад</button>
+            <button type="submit" className="login-button" onClick={onClose}>Войти</button>
           </div>
         </form>
       </div>
