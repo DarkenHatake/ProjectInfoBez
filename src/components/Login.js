@@ -1,56 +1,56 @@
-import React, { useState } from 'react';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import './ComponentsStyles/Login.css';
-import { loginUser } from '../api'; // Импортируем функцию запроса
+// Login.js
 
-const Login = ({ onClose, onRegister, onAuthed }) => { // Принимаем onClose через пропсы
+import React, { useState } from 'react';
+import { loginUser } from '../api'; // Зависит от твоего пути к api.js
+
+const Login = ({ onAuthed }) => {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setError('');
+
     try {
       const response = await loginUser(login, password);
+
+      // Сохраняем токен в localStorage
       localStorage.setItem('token', response.data.JWT);
-      console.log('Ответ сервера:', response.data);
-      onAuthed();
-    } catch (error) {
-      console.error('Ошибка авторизации:', error);
+
+      // Уведомляем родителя, что пользователь авторизован
+      if (onAuthed) onAuthed();
+
+    } catch (err) {
+      console.error('Ошибка входа:', err);
+      setError('Неверный логин или пароль');
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
       <div className="login-login-container">
-        <div className="login-login-header">
-          <p className="login-login-title">Авторизация</p>
-          <button className="login-switch-text" onClick={onRegister}>Нет аккаунта?</button>
-        </div>
+        <h2>Вход</h2>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
         <form onSubmit={handleSubmit}>
-          <div className="login-input-group">
-            <input
-                type="text"
-                placeholder="Login"
-                value={login}
-                onChange={(e) => setLogin(e.target.value)}
-            />
-          </div>
-          <div className="login-input-group password-input">
-            <input
-                type={showPassword ? 'text' : 'password'}
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
-            <span className="login-password-toggle" onClick={() => setShowPassword(!showPassword)}>
-            {showPassword ? <FaEye /> : <FaEyeSlash />}
-          </span>
-          </div>
-          <div className="login-buttons">
-            {/* Кнопка "Назад" вызывает функцию onClose */}
-            <button type="button" className="login-back-button" onClick={onClose}>Назад</button>
-            <button type="submit" className="login-button" onClick={onClose}>Войти</button>
-          </div>
+          <input
+              type="text"
+              placeholder="Логин"
+              value={login}
+              onChange={(e) => setLogin(e.target.value)}
+          />
+          <input
+              type="password"
+              placeholder="Пароль"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+          />
+          <button type="submit" disabled={loading}>
+            {loading ? 'Загрузка...' : 'Войти'}
+          </button>
         </form>
       </div>
   );

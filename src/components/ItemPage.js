@@ -1,58 +1,61 @@
-import React, {useState} from 'react';
+// ItemPage.js
+
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import TaskList from './TaskList'; // Импортируем TaskList
+import { getTasksBySubjectId } from '../api';
+import TaskList from './TaskList';
 import ShareCodeModal from './ShareCodeModal';
-import './ComponentsStyles/ItemPage.css';
 
 const ItemPage = () => {
     const location = useLocation();
     const { item } = location.state || {};
-    const [isCreateModalOpen, setCreateModalOpen] = useState(false);
-    // Пример списка задач (можно заменить на реальные данные из пропсов, удали когда будешь менять)
-    const tasks = [
-        { id: 1, text: "Первая задача", completed: false },
-        { id: 2, text: "Вторая задача", completed: true },
-    ];
+    const [tasks, setTasks] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-    // Функции для обработки задач (можно передать из родительского компонента)
-    const handleEditTask = (taskId, newText) => {
-        console.log("Редактируем задачу:", taskId, newText);
+    useEffect(() => {
+        if (item?.id) {
+            getTasksBySubjectId(item.id)
+                .then(res => {
+                    setTasks(res.data);
+                    setLoading(false);
+                })
+                .catch(err => {
+                    console.error('Ошибка получения задач:', err);
+                    setError('Не удалось загрузить задачи');
+                    setLoading(false);
+                });
+        }
+    }, [item]);
+
+    const handleJoinClick = () => {
+        setIsModalOpen(true);
     };
 
-    const handleDeleteTask = (taskId) => {
-        console.log("Удаляем задачу:", taskId);
-    };
-    const handleOpenCreateModal = () => {
-        setCreateModalOpen(true);
-    };
-
-    const handleCloseCreateModal = () => {
-        setCreateModalOpen(false);
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
     };
 
     if (!item) {
-        return <div className="item-page-error">Элемент не найден</div>;
-
+        return <div>Предмет не найден</div>;
     }
 
     return (
         <div className="item-page-container">
-            <div className="item-page-header">
-                <h1 className="item-page-title">{item.title}</h1>
-                <button className="item-page-share-button" onClick={handleOpenCreateModal}>Поделиться</button>
-                {isCreateModalOpen && (
-                    <ShareCodeModal onClose={handleCloseCreateModal} />
-                )}
-            </div>
-            {/* Добавляем TaskList */}
-            <div className="item-page-tasks">
-                <h2>Задачи</h2>
-                <TaskList
-                    tasks={tasks}
-                    onEdit={handleEditTask}
-                    onDelete={handleDeleteTask}
-                />
-            </div>
+            <h1>{item.title}</h1>
+            <button onClick={handleJoinClick}>Поделиться</button>
+            {isModalOpen && <ShareCodeModal code="dd79d8b1-4735-462b-84ad-4d83390e6fef" onClose={handleCloseModal} />}
+
+            {loading && <p>Загрузка задач...</p>}
+            {error && <p style={{ color: 'red' }}>{error}</p>}
+
+            {!loading && !error && (
+                <div>
+                    <h2>Задачи</h2>
+                    <TaskList tasks={tasks} onEdit={() => {}} onDelete={() => {}} />
+                </div>
+            )}
         </div>
     );
 };

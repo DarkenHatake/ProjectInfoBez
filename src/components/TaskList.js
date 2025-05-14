@@ -1,21 +1,20 @@
+// TaskList.js
+
 import React from 'react';
-import './ComponentsStyles/TaskList.css';
-import Task from './Task'; // Импортируем новый компонент
+import Task from './Task'; // Импортируем Task
 
 const TaskList = ({ tasks, onEdit, onDelete }) => {
     return (
-        <div className="task-list">
-            <ul>
-                {tasks.map((task, index) => (
-                    <Task
-                        key={index}
-                        task={task}
-                        onEdit={onEdit}
-                        onDelete={onDelete}
-                    />
-                ))}
-            </ul>
-        </div>
+        <ul className="task-list">
+            {tasks.map((task, index) => (
+                <Task
+                    key={index}
+                    task={task}
+                    onEdit={onEdit}
+                    onDelete={onDelete}
+                />
+            ))}
+        </ul>
     );
 };
 

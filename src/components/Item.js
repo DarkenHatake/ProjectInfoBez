@@ -1,3 +1,5 @@
+// Item.js
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './ComponentsStyles/Item.css';
@@ -5,7 +7,7 @@ import './ComponentsStyles/Item.css';
 const Item = ({ item, index, onDelete }) => {
     return (
         <li className="item-item">
-            <div className="item-headr">
+            <div className="item-header">
                 <h3 className="item-name">{item.title}</h3>
                 {item.description && (
                     <p className="item-description"><strong>Описание:</strong> {item.description}</p>
