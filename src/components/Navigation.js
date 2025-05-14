@@ -37,6 +37,7 @@ const Navigation = () => {
                     <NavLink to="/" text="Главная" />
                     <NavLink to="/objects" text="Предметы" active />
                     <NavLink to="/personal-tasks" text="Личные задачи" />
+
                 </div>
                 <div className="nav-right-group">
                     {!isAuthed ? (
