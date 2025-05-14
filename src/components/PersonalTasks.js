@@ -21,7 +21,7 @@ const PersonalTasks = () => {
     const handleCreateTask = (newTask) => {
         setTasks((prevTasks) => [...prevTasks, newTask]);
         handleCloseCreateModal();
-        //TODO
+        //
     };
 
     const handleOpenEditModal = (task) => {

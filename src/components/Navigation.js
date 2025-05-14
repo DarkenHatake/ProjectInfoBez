@@ -5,11 +5,7 @@ import './ComponentsStyles/Navigation.css';
 import Register from "./Register";
 
 const Navigation = () => {
-    useEffect((isAuthed) => {
-        var token = localStorage.getItem('token');
-        setAuthed(!!token)
-        console.log(isAuthed);
-    }, []);
+
     const [isModalLoginOpen, setModalLoginOpen] = useState(false);
     const [isModalRegisterOpen, setModalRegisterOpen] = useState(false);
     const [isAuthed, setAuthed] = useState(false);
@@ -41,7 +37,6 @@ const Navigation = () => {
                     <NavLink to="/" text="Главная" />
                     <NavLink to="/objects" text="Предметы" active />
                     <NavLink to="/personal-tasks" text="Личные задачи" />
-
                 </div>
                 <div className="nav-right-group">
                     {!isAuthed ? (

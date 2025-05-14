@@ -1,11 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './styles/App.css';
-import Main from './components/Main'; // Главная страница
-import Object from './components/Object'; // Страница "Предметы"
-import PersonalTasks from './components/PersonalTasks'; // Страница "Личные задачи"
-import Profile from './components/Profile'; // Страница "Профиль"
-import Navigation from './components/Navigation'; // Импортируем компонент навигации
+import Main from './components/Main';
+import Object from './components/Object';
+import PersonalTasks from './components/PersonalTasks';
+import Profile from './components/Profile';
+import Navigation from './components/Navigation';
+import ItemPage from './components/ItemPage'; // Импортируем новый компонент
 
 // Главный компонент приложения
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
                         <Route path="/objects" element={<Object />} />
                         <Route path="/personal-tasks" element={<PersonalTasks />} />
                         <Route path="/profile" element={<Profile />} />
+                        <Route path="/item-page" element={<ItemPage />} /> {/* Добавляем маршрут для ItemPage */}
                     </Routes>
                 </div>
             </Router>
@@ -28,5 +30,4 @@ const App = () => {
     );
 };
 
-export default App; // Экспортируем главный компонент приложения
-
+export default App;

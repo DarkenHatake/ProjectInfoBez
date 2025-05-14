@@ -1,28 +1,17 @@
 import React from 'react';
 import './ComponentsStyles/ItemList.css'; // Импортируйте CSS-файл, если он есть
+import Item from './Item'; // Импортируем новый компонент
 
 const ItemList = ({ items, onDelete }) => {
     if (items === null || items === undefined) {
-        items = []
+        items = [];
     }
+
     return (
         <div className="itemlist-item-list-container">
             <ul className="itemlist-item-list">
                 {items.map((item, index) => (
-                    <li key={index} className="itemlist-item">
-                        <div className="itemlist-item-headr">
-                            <h3 className="itemlist-item-name">{item.title}</h3>
-                            {item.description && (
-                                <p className="itemlist-item-description"><strong>Описание:</strong> {item.description}</p>
-                            )}
-                            {item.deadline && (
-                                <p className="itemlist-item-deadline"><strong>Дедлайн:</strong> {item.deadline}</p>
-                            )}
-                        </div>
-                        <button className="itemlist-delete-button" onClick={() => onDelete(index)}>Удалить</button>
-                        <button className="itemlist-go-button">Перейти</button>
-
-                    </li>
+                    <Item key={index} item={item} index={index} onDelete={onDelete} />
                 ))}
             </ul>
         </div>
