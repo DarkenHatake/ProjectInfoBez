@@ -53,3 +53,6 @@ const Profile = () => {
         </div>
     );
 };
+
+// Profile.js
+export default Profile;

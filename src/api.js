@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000/api/';
+const API_URL = 'http://localhost:8080/api/';
 
 // Создаем экземпляр Axios с базовым URL
 const api = axios.create({
@@ -101,6 +101,12 @@ export const updatePersonalTask = (taskId, data) => {
 // Удалить персональную задачу
 export const deletePersonalTask = (taskId) => {
   return api.delete(`personal-tasks/${taskId}`);
+};
+
+// ====== ПРОФИЛЬ ПОЛЬЗОВАТЕЛЯ ======
+// Получить данные профиля
+export const getProfile = () => {
+  return api.get('profile');
 };
 
 export default api;
