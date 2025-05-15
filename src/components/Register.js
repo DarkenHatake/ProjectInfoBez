@@ -7,7 +7,7 @@ import { registerUser } from '../api';
 
 const Register = ({ onLogin }) => {
   const [formData, setFormData] = useState({
-    email: '',
+    // email: '',
     username: '',
     password: '',
     repeatPassword: ''
@@ -32,7 +32,7 @@ const Register = ({ onLogin }) => {
 
     const { email, username, password, repeatPassword } = formData;
 
-    if (!email || !username || !password || !repeatPassword) {
+    if (/*!email || */!username || !password || !repeatPassword) {
       setError('Пожалуйста, заполните все поля');
       return;
     }
@@ -43,11 +43,11 @@ const Register = ({ onLogin }) => {
     }
 
     try {
-      await registerUser(email, username, password);
+      await registerUser(/*email,*/ username, password);
       onLogin(); // Переходим на экран входа
       setIsVisible(false); // Скрываем форму регистрации
     } catch (err) {
-      setError(err.response?.data?.message || 'Ошибка регистрации');
+      // setError(err.response?.data?.message || 'Ошибка регистрации');
     }
   };
 
@@ -63,7 +63,7 @@ const Register = ({ onLogin }) => {
         {error && <div className="register-error-message">{error}</div>}
 
         <form onSubmit={handleSubmit}>
-          <div className="register-input-group">
+          {/*<div className="register-input-group">
             <input
                 type="email"
                 name="email"
@@ -72,7 +72,7 @@ const Register = ({ onLogin }) => {
                 onChange={handleChange}
                 required
             />
-          </div>
+          </div>*/}
 
           <div className="register-input-group">
             <input

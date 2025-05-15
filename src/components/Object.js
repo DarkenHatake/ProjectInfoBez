@@ -9,9 +9,14 @@ const Object = () => {
 
     useEffect( () => {
         async function fetchData() {
-            const responceSub = await getSubjects()
-            setItems(responceSub.data)
-            console.log(responceSub.data)
+            try{
+                const responceSub = await getSubjects()
+                setItems(responceSub.data)
+                console.log(responceSub.data)
+            } catch (e) {
+                console.log(e)
+            }
+
         }
         fetchData()
     }, []);
@@ -27,8 +32,8 @@ const Object = () => {
         setModalOpen(false);
     };
 
-    const handleAddItem = async (title, description, deadline) => {
-        const response = await createSubject(title, description, deadline);
+    const handleAddItem = async (title,/* description,*/ deadline) => {
+        const response = await createSubject(title, /*description,*/ deadline);
         console.log(response);
         const responceSub = await getSubjects()
         setItems(responceSub.data)

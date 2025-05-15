@@ -1,6 +1,7 @@
 // ShareCodeModal.js
 
 import React from 'react';
+import './ComponentsStyles/ShareCodeModal.css'
 
 const ShareCodeModal = ({ code, onClose }) => {
     const handleCopy = () => {

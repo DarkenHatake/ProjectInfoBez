@@ -1,5 +1,5 @@
 // CreateItemModal.js
-
+import './ComponentsStyles/CreateItemModal.css'
 import React, { useState } from 'react';
 import { createSubject } from '../api';
 
@@ -12,12 +12,12 @@ const CreateItemModal = ({ onClose, onAddItem }) => {
         if (!itemName.trim() || !itemDeadline) return;
 
         // Отправляем запрос на сервер
-        createSubject(itemName, itemDescription, itemDeadline)
+        createSubject(itemName, /*itemDescription,*/ /*itemDeadline*/)
             .then(() => {
-                onAddItem(itemName, itemDescription, itemDeadline);
+                onAddItem(itemName, /*itemDescription,*/ /*itemDeadline*/);
                 setItemName('');
-                setItemDescription('');
-                setItemDeadline('');
+               // setItemDescription('');
+               /* setItemDeadline('');*/
                 onClose();
             })
             .catch((err) => {
@@ -36,21 +36,21 @@ const CreateItemModal = ({ onClose, onAddItem }) => {
                     onChange={(e) => setItemName(e.target.value)}
                 />
             </div>
-            <div className="createitemmodal-input-group">
+            {/*<div className="createitemmodal-input-group">
         <textarea
             placeholder="Описание"
             value={itemDescription}
             onChange={(e) => setItemDescription(e.target.value)}
             rows="3"
         />
-            </div>
-            <div className="createitemmodal-input-group">
+            </div>*/}
+            {/*<div className="createitemmodal-input-group">
                 <input
                     type="date"
                     value={itemDeadline}
                     onChange={(e) => setItemDeadline(e.target.value)}
                 />
-            </div>
+            </div>*/}
             <div className="createitemmodal-buttons">
                 <button className="createitemmodal-back-button" onClick={onClose}>
                     Назад

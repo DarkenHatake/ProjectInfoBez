@@ -22,7 +22,7 @@ const App = () => {
                         <Route path="/objects" element={<Object />} />
                         <Route path="/personal-tasks" element={<PersonalTasks />} />
                         <Route path="/profile" element={<Profile />} />
-                        <Route path="/item-page" element={<ItemPage />} /> {/* Добавляем маршрут для ItemPage */}
+                        <Route path="/item-page/:id" element={<ItemPage />} /> {/* Добавляем маршрут для ItemPage */}
                     </Routes>
                 </div>
             </Router>

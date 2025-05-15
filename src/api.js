@@ -37,6 +37,25 @@ export const getSubjects = () => {
   return api.get('subjects');
 };
 
+export const getSubjectByID = async (id) => {
+  console.log(id)
+  try {
+    // Получаем данные (ожидаем выполнения промиса)
+    const subjects = await getSubjects(); // Должен вернуть массив
+
+    for (const dataKey in subjects.data) {
+      console.log(dataKey.id)
+      console.log(subjects.data)
+      if (dataKey.id === id)
+        return dataKey
+    }
+  } catch (error) {
+    console.error('Ошибка получения предмета:', error);
+    throw error;
+    return
+  }
+};
+
 // Создать новый предмет
 export const createSubject = (title) => {
   return api.post('subjects', { title });
@@ -50,6 +69,7 @@ export const joinSubjectByCode = (code) => {
 // ====== ЗАДАЧИ ПО ПРЕДМЕТУ ======
 // Получить задачи предмета
 export const getTasksBySubjectId = (subjectId) => {
+  console.log("SubjectID: ", subjectId)
   return api.get(`subjects/${subjectId}/tasks`);
 };
 

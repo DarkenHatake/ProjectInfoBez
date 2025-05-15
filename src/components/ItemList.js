@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Item from './Item'; // Импортируем компонент Item
 import { getSubjects } from '../api'; // Импортируем функцию для получения предметов
-
+import './ComponentsStyles/ItemList.css'
 const ItemList = ({ onDelete }) => {
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(true);

@@ -1,20 +1,40 @@
 // ItemPage.js
 
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import { getTasksBySubjectId } from '../api';
+import {useLocation, useParams} from 'react-router-dom';
+import {createPersonalTask, getSubjectByID, getSubjects, getTasksBySubjectId} from '../api';
 import TaskList from './TaskList';
 import ShareCodeModal from './ShareCodeModal';
+import CreateTaskForm from './CreateTaskForm';
 
 const ItemPage = () => {
-    const location = useLocation();
-    const { item } = location.state || {};
+    //const location = useLocation();
+    const [item, setItem]  = useState({});
     const [tasks, setTasks] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
-
+    const { id } = useParams(); // /users/:id
+    const [isCreateOpen, setCreateOpen] = useState(false);
     useEffect(() => {
+        try {
+            getSubjects().then((res) => {
+                console.log(res.data)
+                console.log(id)
+                for (const resKey of res.data) {
+                    console.log("resKey: ", resKey.id)
+                    if (resKey.id == id) {
+
+                        setItem(resKey)
+                        console.log(resKey)
+                    }
+
+                }
+            })
+        } catch (e) {
+            console.log(e)
+        }
+
         if (item?.id) {
             getTasksBySubjectId(item.id)
                 .then(res => {
@@ -27,10 +47,26 @@ const ItemPage = () => {
                     setLoading(false);
                 });
         }
-    }, [item]);
-
+    }, []);
+    const handleCreateTask = (newTask) => {
+        createPersonalTask(newTask.title, newTask.description)
+            .then(res => {
+                setTasks([...tasks, res.data]);
+                handleCloseCreateModal();
+            })
+            .catch(err => {
+                console.error('Ошибка создания задачи:', err);
+            });
+    };
     const handleJoinClick = () => {
         setIsModalOpen(true);
+    };
+    const handleOpenCreateModal = () => {
+        setCreateOpen(true);
+    };
+
+    const handleCloseCreateModal = () => {
+        setCreateOpen(false);
     };
 
     const handleCloseModal = () => {
@@ -45,15 +81,22 @@ const ItemPage = () => {
         <div className="item-page-container">
             <h1>{item.title}</h1>
             <button onClick={handleJoinClick}>Поделиться</button>
-            {isModalOpen && <ShareCodeModal code="dd79d8b1-4735-462b-84ad-4d83390e6fef" onClose={handleCloseModal} />}
+            {isModalOpen && <ShareCodeModal code={item.invitation_code} onClose={handleCloseModal}/>}
 
             {loading && <p>Загрузка задач...</p>}
-            {error && <p style={{ color: 'red' }}>{error}</p>}
+            {error && <p style={{color: 'red'}}>{error}</p>}
 
             {!loading && !error && (
                 <div>
                     <h2>Задачи</h2>
-                    <TaskList tasks={tasks} onEdit={() => {}} onDelete={() => {}} />
+
+                    <button className="item-create-personal-tasks" onClick={handleOpenCreateModal}>Создать задачу</button>
+                    {isCreateOpen && (
+                        <CreateTaskForm onClose={handleCloseCreateModal} onCreate={handleCreateTask} />
+                    )}
+                    <TaskList tasks={tasks} onEdit={() => {
+                    }} onDelete={() => {
+                    }}/>
                 </div>
             )}
         </div>
