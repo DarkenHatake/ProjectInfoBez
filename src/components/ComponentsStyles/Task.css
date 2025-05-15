@@ -9,32 +9,194 @@
     overflow: hidden;
 }
 
-.task-headr {
+.task-header {
     text-align: left;
-}
-.task-buttons{
-    width: 223px;
-    height: fit-content;
     display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
+
+.task-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-title {
+    font-size: 18px;
+    margin: 0;
+}
+
+.task-description {
+    font-size: 14px;
+    margin: 5px 0;  
+}
+
+.task-deadlines-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.task-deadlines {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.task-deadline {
+    font-size: 14px;
+    margin: 0;
+}
+
+.task-status-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.task-manage-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+/* Стили кнопок остаются без изменений */
+.task-done-button{
+    width: 104px;
+    height: 31px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    margin-left: 200px;}
+
+.task-submit-button {
+    width: 104px;
+    height: 31px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    margin-left: 20px;
+}
+
+.task-done-button {
+    background-color: #a8ffa8;
+    border: 2px solid #a8ffa8;
+}
+
+.task-submit-button {
+    background-color: #80c8ff;
+    border: 2px solid #80c8ff;
+}
+
+.task-done-button.active {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+    color: white;
+}
+
+.task-submit-button.active {
+    background-color: #2196F3;
+    border-color: #2196F3;
+    color: white;
+}
+
+.task-edit-button{
+    width: 104px;
+    height: 31px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 200px;}
+
 .task-delete-button {
     width: 104px;
     height: 31px;
     font-family: 'Roboto Mono', monospace;
     font-size: 16px;
-    padding: 5px 20px;
-    background-color: transparent;
-    border: 2px solid #EE8283; /* Прозрачный фон */
-    border-radius: 5px; /* Скругленные углы */
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 20px;
 }
 
 .task-edit-button {
-    width: 104px;
-    height: 31px;
-    padding: 5px 17px;
-    font-family: 'Roboto Mono', monospace;
-    font-size: 16px;
     background-color: #a8ffa8;
-    border: 2px solid #a8ffa8; /* Прозрачный фон */
-    border-radius: 5px; /* Скругленные углы */
+    border: 2px solid #a8ffa8;
+}
+
+.task-delete-button {
+    background-color: transparent;
+    border: 2px solid #EE8283;
+}
+
+/* Адаптивность */
+@media (max-width: 992px) {
+    .task-title,
+    .task-deadlines {
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    .task-item {
+        padding: 12px;
+    }
+    
+    .task-title-row,
+    .task-deadlines-row {
+        flex-wrap: wrap;
+    }
+    
+    .task-title,
+    .task-deadlines {
+        max-width: 100%;
+        margin-bottom: 8px;
+    }
+    
+    .task-status-buttons,
+    .task-manage-buttons {
+        width: 100%;
+        justify-content: flex-start;
+        margin-top: 8px;
+    }
+    
+    .task-done-button,
+    .task-submit-button,
+    .task-edit-button,
+    .task-delete-button {
+        width: 90px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .task-item {
+        padding: 10px;
+    }
+    
+    .task-title {
+        font-size: 16px;
+    }
+    
+    .task-description,
+    .task-deadline {
+        font-size: 13px;
+    }
+    
+    .task-done-button,
+    .task-submit-button,
+    .task-edit-button,
+    .task-delete-button {
+        width: 80px;
+        height: 28px;
+        font-size: 12px;
+        padding: 4px;
+    }
 }

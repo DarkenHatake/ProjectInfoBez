@@ -5,8 +5,13 @@ import './ComponentsStyles/Item.css';
 const Item = ({ item, index, onDelete }) => {
     return (
         <li className="item-item">
-            <div className="item-headr">
-                <h3 className="item-name">{item.title}</h3>
+            <div className="item-header">
+                <div className="item-title-wrapper">
+                    <h3 className="item-name">{item.title}</h3>
+                    <div className={`item-status ${item.isCreator ? 'creator' : 'participant'}`}>
+                        {item.isCreator ? 'Создатель' : 'Участник'}
+                    </div>
+                </div>
                 {item.description && (
                     <p className="item-description"><strong>Описание:</strong> {item.description}</p>
                 )}
@@ -14,8 +19,14 @@ const Item = ({ item, index, onDelete }) => {
                     <p className="item-deadline"><strong>Дедлайн:</strong> {item.deadline}</p>
                 )}
             </div>
-            <button className="item-delete-button" onClick={() => onDelete(index)}>Удалить</button>
-            <Link to={{ pathname: '/item-page', state: { item } }} className="item-go-button">Перейти</Link>
+            
+                <button className="item-delete-button" onClick={() => onDelete(index)}>
+                    Удалить
+                </button>
+                <Link to={{ pathname: '/item-page', state: { item } }} className="item-go-button">
+                    Перейти
+                </Link>
+            
         </li>
     );
 };

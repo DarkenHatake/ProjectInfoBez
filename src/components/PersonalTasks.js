@@ -19,9 +19,13 @@ const PersonalTasks = () => {
     };
 
     const handleCreateTask = (newTask) => {
-        setTasks((prevTasks) => [...prevTasks, newTask]);
+         setTasks(prev => [...prev, {
+        ...newTask,
+        id: Date.now(),
+        completed: false,
+        submitted: false
+    }]);
         handleCloseCreateModal();
-        //
     };
 
     const handleOpenEditModal = (task) => {
@@ -47,11 +51,24 @@ const PersonalTasks = () => {
         setTasks((prevTasks) => prevTasks.filter((task) => task !== taskToDelete));
     };
 
+    const handleCompleteTask = (task) => {
+    setTasks(tasks.map(t => 
+        t.id === task.id ? {...t, completed: !t.completed} : t
+    ));
+};
+
+    const handleSubmitTask = (task) => {
+    setTasks(tasks.map(t => 
+        t.id === task.id ? {...t, submitted: !t.submitted} : t
+    ));
+};
+
     return (
         <div className="personal-tasks-container">
             <h1 className="personal-tasks-title">Личные задачи</h1>
             <button className="create-personal-tasks" onClick={handleOpenCreateModal}>Создать задачу</button>
-            <TaskList tasks={tasks} onEdit={handleOpenEditModal} onDelete={handleDeleteTask} />
+            <TaskList tasks={tasks} onEdit={handleOpenEditModal} onDelete={handleDeleteTask} onComplete={handleCompleteTask}
+    onSubmit={handleSubmitTask} />
 
             {/* Модальное окно с формой создания задачи */}
             {isCreateModalOpen && (

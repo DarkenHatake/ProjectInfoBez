@@ -7,15 +7,17 @@
     border: 3px solid #80ffe8;
     border-radius: 8px;
     overflow: hidden; /* Скрываем всё, что выходит за пределы экрана */
-    margin-bottom: 20px; /* Отступ между элементами списка */
-    padding: 10px; /* Добавляем немного внутреннего отступа */
+    margin-bottom: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
 }
-
 .item-item-name {
     margin-top: 10px;
 
 }
-.item-headr{
+.item-header{
     text-align: left;
 }
 .item-delete-button {
@@ -29,6 +31,7 @@
     border-radius: 5px; /* Скругленные углы */
     cursor: pointer;
     margin-left: 20px; /* Отступ слева от заголовка */
+    box-sizing: border-box;
 }
 .item-go-button {
     width: 104px;
@@ -41,10 +44,48 @@
     border-radius: 5px; /* Скругленные углы */
     cursor: pointer;
     margin-left: 20px; /* Отступ слева от заголовка */
+    box-sizing: border-box;
 }
 .item-description{
     margin-top: 30px;
 }
 .item-deadline {
     margin-top: 10px; /* Отступ сверху для описания и дедлайна */
+}
+
+.item-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.item-name {
+    margin: 0;
+    font-size: 20px;
+}
+
+.item-status {
+    padding: 6px 10px; /* Уменьшенные отступы */
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 400;
+    white-space: nowrap; /* Запрет переноса текста */
+    display: inline-block; /* Чтобы ширина определялась содержимым */
+    width: auto; /* Ширина по содержимому */
+    margin-left: 20px; /* Отступ от названия предмета */
+}
+
+.item-status.creator {
+    background: #A8FFA8;
+}
+
+.item-status.participant {
+    background: #FFAC81;
+}
+
+.item-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
 }

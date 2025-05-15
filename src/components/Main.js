@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './ComponentsStyles/Main.css';
 
-const Main = ({ items }) => {
+const Main = ({ items, personalTasks = [] }) => {
     // Функция для сортировки предметов по дедлайну (сначала ближайшие)
     const getClosestDeadlineItems = () => {
         if (!items || items.length === 0) return [];
@@ -17,9 +17,18 @@ const Main = ({ items }) => {
         return sortedItems.slice(0, 3);
     };
 
-    const closestItems = getClosestDeadlineItems();
+    // Функция для получения 2 ближайших персональных задач
+    const getClosestTasks = () => {
+        return [...personalTasks]
+            .filter(task => task.deadline)
+            .sort((a, b) => new Date(a.deadline) - new Date(b.deadline))
+            .slice(0, 2);
+    };
 
-    return (
+    const closestItems = getClosestDeadlineItems();
+    const closestTasks = getClosestTasks();
+
+        return (
         <div className="main-main-container">
             <div className="main-content-wrapper">
                 <h1 className="main-dashboard-title">Дашборд</h1>
@@ -60,6 +69,25 @@ const Main = ({ items }) => {
 
                 <div className="main-personal-tasks-frame">
                     <h2 className="main-frame-title">Персональные задачи:</h2>
+                    {closestTasks.length > 0 ? (
+                        <ul className="main-tasks-list">
+                            {closestTasks.map((task, index) => (
+                                <li key={index} className="main-task-item">
+                                    <h3 className="main-task-title">{task.title}</h3>
+                                    {task.deadline && (
+                                        <p className="main-task-deadline">
+                                            {new Date(task.deadline).toLocaleDateString('ru-RU', {
+                                                day: '2-digit',
+                                                month: '2-digit'
+                                            })}
+                                        </p>
+                                    )}
+                                </li>
+                            ))}
+                        </ul>
+                    ) : (
+                        <p className="main-no-tasks">Нет задач с дедлайном</p>
+                    )}
                 </div>
             </div>
         </div>
