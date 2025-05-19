@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import './ComponentsStyles/Login.css';
 import { loginUser } from '../api';
+import PasswordReset from './PasswordReset'; // Импортируем новый компонент
 
 const Login = ({ onClose, onRegister, onAuthed }) => {
   const [login, setLogin] = useState('');
@@ -9,6 +10,7 @@ const Login = ({ onClose, onRegister, onAuthed }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(''); // Для отображения ошибок
   const [loading, setLoading] = useState(false); // Индикатор загрузки
+  const [showPasswordReset, setShowPasswordReset] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,6 +35,7 @@ const Login = ({ onClose, onRegister, onAuthed }) => {
   };
 
   return (
+    <>
       <div className="login-login-container">
         <div className="login-login-header">
           <p className="login-login-title">Авторизация</p>
@@ -66,6 +69,16 @@ const Login = ({ onClose, onRegister, onAuthed }) => {
             {showPassword ? <FaEye /> : <FaEyeSlash />}
           </span>
           </div>
+          {/* Добавляем ссылку "Забыли пароль?" */}
+          <div className="login-forgot-password">
+            <button 
+              type="button" 
+              className="login-forgot-password-link"
+              onClick={() => setShowPasswordReset(true)}
+            >
+              Забыли пароль?
+            </button>
+          </div>
           <div className="login-buttons">
             <button
                 type="button"
@@ -85,6 +98,16 @@ const Login = ({ onClose, onRegister, onAuthed }) => {
           </div>
         </form>
       </div>
+      
+      {/* Модальное окно восстановления пароля */}
+      {showPasswordReset && (
+        <div className="login-modal-overlay">
+          <PasswordReset 
+            onClose={() => setShowPasswordReset(false)} 
+          />
+        </div>
+      )}
+    </>
   );
 };
 

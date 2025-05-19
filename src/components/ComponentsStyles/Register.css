@@ -4,7 +4,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 480px;
-  min-height: 408px; /* Изменено с height на min-height */
+  min-height: 358px; /* Изменено с height на min-height */
   background: #ffffff;
   border: 3px solid #a8ffa8;
   border-radius: 12px;
@@ -78,6 +78,7 @@
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
+  gap: 12px;
 }
 
 .register-buttons button {

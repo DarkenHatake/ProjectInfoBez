@@ -130,3 +130,42 @@
 .login-buttons .login-login-button:hover {
   background: #00ccb3;
 }
+
+.login-forgot-password {
+  text-align: right;
+  margin: 10px 0;
+}
+
+/* Добавляем в конец файла Login.css */
+
+.login-forgot-password {
+  text-align: right;
+  margin-bottom: 15px;
+}
+
+.login-forgot-password-link {
+  background: none;
+  border: none;
+  color: #80b3ff;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.login-forgot-password-link:hover {
+  text-decoration: underline;
+}
+
+.login-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}

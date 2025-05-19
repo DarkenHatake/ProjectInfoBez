@@ -78,7 +78,7 @@ const Register = ({ onLogin }) => {
             <input
                 type="text"
                 name="username"
-                placeholder="Username"
+                placeholder="Логин"
                 value={formData.username}
                 onChange={handleChange}
                 required
@@ -89,7 +89,7 @@ const Register = ({ onLogin }) => {
             <input
                 type={showPassword ? 'text' : 'password'}
                 name="password"
-                placeholder="Password"
+                placeholder="Пароль"
                 value={formData.password}
                 onChange={handleChange}
                 required
@@ -107,7 +107,7 @@ const Register = ({ onLogin }) => {
             <input
                 type={showRepeatPassword ? 'text' : 'password'}
                 name="repeatPassword"
-                placeholder="Repeat password"
+                placeholder="Повторите пароль"
                 value={formData.repeatPassword}
                 onChange={handleChange}
                 required
