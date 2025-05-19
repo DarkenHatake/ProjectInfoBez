@@ -1,3 +1,16 @@
+.joinsubject-modal-overlay {
+  position: fixed;  /* Фиксированное позиционирование */
+  top: 0;           /* На весь экран */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный */
+  display: flex;     /* Для центрирования формы */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;     /* Поверх других элементов */
+}
+
 /* Центровка без overlay */
 .joinsubject-join-subject-wrapper {
   position: fixed;

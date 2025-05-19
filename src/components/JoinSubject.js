@@ -26,6 +26,7 @@ const JoinSubject = ({ onClose }) => {
     };
 
     return (
+        <div className="joinsubject-modal-overlay">
         <div className="joinsubject-join-subject-wrapper">
             <div className="joinsubject-join-subject-container">
                 <h2 className="joinsubject-form-title">Присоединиться к предмету</h2>
@@ -47,6 +48,7 @@ const JoinSubject = ({ onClose }) => {
                     </button>
                 </div>
             </div>
+        </div>
         </div>
     );
 };

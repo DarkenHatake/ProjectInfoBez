@@ -1,18 +1,28 @@
+/* Оверлей для формы регистрации */
+.register-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
 .register-container {
-  position: absolute;
-  top: 400px;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 480px;
-  min-height: 358px; /* Изменено с height на min-height */
+  min-height: 358px;
   background: #ffffff;
   border: 3px solid #a8ffa8;
   border-radius: 12px;
   padding: 20px;
   box-sizing: border-box;
   transition: min-height 0.3s ease;
+  animation: fadeIn 0.3s ease-in-out;
 }
-
 .register-container.register-with-error {
   min-height: 450px; /* Увеличиваем высоту при наличии ошибки */
 }
