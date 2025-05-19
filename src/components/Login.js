@@ -26,7 +26,7 @@ const Login = ({ onClose, onRegister, onAuthed }) => {
       }
     } catch (error) {
       console.error('Ошибка авторизации:', error);
-      setError('Неверный логин или пароль');
+      setError(<p className="login-error">Неверный логин или пароль</p>);
     } finally {
       setLoading(false); // Скрываем загрузку
     }
