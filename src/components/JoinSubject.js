@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { joinSubjectByCode } from '../api'; // Импортируем функцию для присоединения к предмету
+import './ComponentsStyles/JoinSubject.css';
 
 const JoinSubject = ({ onClose }) => {
     const [code, setCode] = useState('');
@@ -28,6 +29,7 @@ const JoinSubject = ({ onClose }) => {
         <div className="joinsubject-join-subject-wrapper">
             <div className="joinsubject-join-subject-container">
                 <h2 className="joinsubject-form-title">Присоединиться к предмету</h2>
+
                 <div className="joinsubject-input-container">
                     <input
                         type="text"
@@ -37,6 +39,7 @@ const JoinSubject = ({ onClose }) => {
                         onChange={(e) => setCode(e.target.value)}
                     />
                 </div>
+
                 <div className="joinsubject-buttons-container">
                     <button className="joinsubject-back-button" onClick={onClose}>Назад</button>
                     <button className="joinsubject-join-button" onClick={handleJoin} disabled={loading}>

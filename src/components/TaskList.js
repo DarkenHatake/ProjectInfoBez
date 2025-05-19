@@ -1,7 +1,8 @@
 // TaskList.js
 
 import React from 'react';
-import Task from './Task'; // Импортируем Task
+import './ComponentsStyles/TaskList.css';
+import Task from './Task'; // Импортируем новый компонент
 
 const TaskList = ({ tasks, onEdit, onDelete }) => {
     return (

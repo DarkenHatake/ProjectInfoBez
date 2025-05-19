@@ -104,3 +104,44 @@ html, body {
       margin-bottom: 20px; /* Добавляем пространство снизу */
   }
 }
+
+/* Стили для персональных задач */
+.main-tasks-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0 0;
+}
+
+.main-task-item {
+    margin-bottom: 32px;
+    position: relative;
+}
+
+.main-task-title {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+    color: #000000;
+    margin: 0 0 6px 0;
+}
+
+.main-task-deadline {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #000000;
+    margin: 0;
+}
+
+.main-task-deadline::before {
+    content: 'Дедлайн: ';
+    font-weight: 700;
+}
+
+.main-no-tasks {
+    font-family: 'Roboto Mono', monospace;
+    color: #666;
+    margin-top: 20px;
+}
