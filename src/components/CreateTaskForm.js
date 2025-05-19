@@ -36,6 +36,7 @@ const CreateTaskForm = ({ subjectId, onClose, onCreate }) => {
     };
 
     return (
+        <div className="createtaskform-modal-overlay">
         <div className="createtaskform-create-task-container">
             <h2>Создать задачу</h2>
             <input
@@ -75,6 +76,7 @@ const CreateTaskForm = ({ subjectId, onClose, onCreate }) => {
                     Создать задачу
                 </button>
             </div>
+        </div>
         </div>
     );
 };
