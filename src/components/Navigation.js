@@ -5,6 +5,11 @@ import './ComponentsStyles/Navigation.css';
 import Register from "./Register";
 
 const Navigation = () => {
+    useEffect((isAuthed) => {
+        var token = localStorage.getItem('token');
+        setAuthed(!!token)
+        console.log(isAuthed);
+    }, []);
 
     const [isModalLoginOpen, setModalLoginOpen] = useState(false);
     const [isModalRegisterOpen, setModalRegisterOpen] = useState(false);

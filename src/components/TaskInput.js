@@ -1,26 +1,25 @@
+// TaskInput.js
+
 import React from 'react';
-import './ComponentsStyles/TaskInput.css'; // Подключаем CSS для стилизации рамки
+import './ComponentsStyles/TaskInput.css';
 
 const TaskInput = ({ taskInput, deadlineInput, handleInputChange, handleDeadlineChange, addTask }) => {
     return (
         <div className="task-input-container">
-            {/* Поле ввода для новой задачи */}
             <input
                 type="text"
-                value={taskInput} // Значение поля ввода связано с состоянием taskInput
-                onChange={handleInputChange} // Обработчик изменения текста в поле
-                placeholder="Добавьте новую задачу" // Подсказка для пользователя
+                value={taskInput}
+                onChange={handleInputChange}
+                placeholder="Добавьте новую задачу"
             />
 
-            {/* Поле ввода для дедлайна */}
             <input
                 type="date"
-                value={deadlineInput} // Значение поля ввода связано с состоянием deadlineInput
-                onChange={handleDeadlineChange} // Обработчик изменения дедлайна
+                value={deadlineInput}
+                onChange={handleDeadlineChange}
                 placeholder="Укажите дедлайн"
             />
 
-            {/* Кнопка для добавления задачи */}
             <button onClick={addTask}>Добавить задачу</button>
         </div>
     );

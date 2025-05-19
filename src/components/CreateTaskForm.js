@@ -1,27 +1,38 @@
+// CreateTaskForm.js
+
 import React, { useState } from 'react';
+import { createSubjectTask } from '../api';
 import './ComponentsStyles/CreateTaskForm.css';
 
-const CreateTaskForm = ({ onClose, onCreate }) => {
+const CreateTaskForm = ({ subjectId, onClose, onCreate }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [deadlineStart, setDeadlineStart] = useState('');
     const [deadlineEnd, setDeadlineEnd] = useState('');
 
     const handleSubmit = () => {
-        if (title.trim() && description.trim() && deadlineStart && deadlineEnd) {
-            onCreate({
-                title,
-                description,
-                deadlineStart,
-                deadlineEnd,
+        if (!title.trim() || !deadlineStart || !deadlineEnd) return;
+
+        // Отправляем задачу на сервер
+        createSubjectTask(subjectId, title, description, deadlineStart, deadlineEnd)
+            .then(() => {
+                onCreate({
+                    title,
+                    description,
+                    deadlineStart,
+                    deadlineEnd,
+                });
+
+                // Очищаем поля
+                setTitle('');
+                setDescription('');
+                setDeadlineStart('');
+                setDeadlineEnd('');
+                onClose();
+            })
+            .catch((err) => {
+                console.error('Ошибка при создании задачи:', err);
             });
-            // Очистка формы
-            setTitle('');
-            setDescription('');
-            setDeadlineStart('');
-            setDeadlineEnd('');
-            onClose();
-        }
     };
 
     return (
@@ -51,8 +62,18 @@ const CreateTaskForm = ({ onClose, onCreate }) => {
                 />
             </div>
             <div className="createtaskform-buttons">
-                <button className="createtaskform-cancel-btn" onClick={onClose}>Отмена</button>
-                <button className="createtaskform-create-btn" onClick={handleSubmit}>Создать задачу</button>
+                <button
+                    className="createtaskform-cancel-btn"
+                    onClick={onClose}
+                >
+                    Отмена
+                </button>
+                <button
+                    className="createtaskform-create-btn"
+                    onClick={handleSubmit}
+                >
+                    Создать задачу
+                </button>
             </div>
         </div>
     );
