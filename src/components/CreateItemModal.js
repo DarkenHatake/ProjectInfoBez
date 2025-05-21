@@ -6,23 +6,14 @@ import { createSubject } from '../api';
 const CreateItemModal = ({ onClose, onAddItem }) => {
     const [itemName, setItemName] = useState('');
     const [itemDescription, setItemDescription] = useState('');
-    const [itemDeadline, setItemDeadline] = useState('');
 
     const handleAdd = () => {
-        if (!itemName.trim() || !itemDeadline) return;
-
-        // Отправляем запрос на сервер
-        createSubject(itemName, /*itemDescription,*/ /*itemDeadline*/)
-            .then(() => {
-                onAddItem(itemName, /*itemDescription,*/ /*itemDeadline*/);
+        if (!itemName.trim()) return;
+                onAddItem(itemName, itemDescription);
                 setItemName('');
-               // setItemDescription('');
-               /* setItemDeadline('');*/
+               setItemDescription('');
                 onClose();
-            })
-            .catch((err) => {
-                console.error('Ошибка при создании предмета:', err);
-            });
+
     };
 
     return (
@@ -37,14 +28,14 @@ const CreateItemModal = ({ onClose, onAddItem }) => {
                         onChange={(e) => setItemName(e.target.value)}
                     />
                 </div>
-                {/*<div className="createitemmodal-input-group">
+                <div className="createitemmodal-input-group">
         <textarea
             placeholder="Описание"
             value={itemDescription}
             onChange={(e) => setItemDescription(e.target.value)}
             rows="3"
         />
-                </div>*/}
+                </div>
                 {/*<div className="createitemmodal-input-group">
                     <input
                     type="date"
