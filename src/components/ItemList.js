@@ -1,36 +1,18 @@
-// ItemList.js
-
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Item from './Item'; // Импортируем компонент Item
-import { getSubjects } from '../api'; // Импортируем функцию для получения предметов
-import './ComponentsStyles/ItemList.css'
-const ItemList = ({ onDelete }) => {
-    const [items, setItems] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+import './ComponentsStyles/ItemList.css';
 
-    useEffect(() => {
-        // Загружаем список предметов при монтировании компонента
-        getSubjects()
-            .then((response) => {
-                setItems(response.data);
-                setLoading(false);
-            })
-            .catch((err) => {
-                console.error('Ошибка при загрузке предметов:', err);
-                setError('Не удалось загрузить список предметов');
-                setLoading(false);
-            });
-    }, []);
-
-    if (loading) return <div>Загрузка...</div>;
-    if (error) return <div>{error}</div>;
+const ItemList = ({ items = [], onDelete }) => {
+    // Если items не передан или пуст
+    if (!items || items.length === 0) {
+        return <div>Нет предметов</div>;
+    }
 
     return (
         <div className="itemlist-item-list-container">
             <ul className="itemlist-item-list">
-                {items.map((item, index) => (
-                    <Item key={item.id} item={item} index={index} onDelete={onDelete} />
+                {items.map((item) => (
+                    <Item key={item.id} item={item} onDelete={onDelete} index={item.id}/>
                 ))}
             </ul>
         </div>

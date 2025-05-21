@@ -1,38 +1,38 @@
 // CreateTaskForm.js
 
 import React, { useState } from 'react';
-import { createSubjectTask } from '../api';
+import {createPersonalTask, createSubjectTask} from '../api';
 import './ComponentsStyles/CreateTaskForm.css';
 
-const CreateTaskForm = ({ subjectId, onClose, onCreate }) => {
+const CreateTaskForm = ({ subjectId, onClose, onCreate,isSubjectTask }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [deadlineStart, setDeadlineStart] = useState('');
+    //const [deadlineStart, setDeadlineStart] = useState('');
     const [deadlineEnd, setDeadlineEnd] = useState('');
 
     const handleSubmit = () => {
-        if (!title.trim() || !deadlineStart || !deadlineEnd) return;
+        if (!title.trim()) return;
 
         // Отправляем задачу на сервер
-        createSubjectTask(subjectId, title, description, deadlineStart, deadlineEnd)
-            .then(() => {
-                onCreate({
-                    title,
-                    description,
-                    deadlineStart,
-                    deadlineEnd,
-                });
-
-                // Очищаем поля
+        if (isSubjectTask) {
+            createSubjectTask(subjectId, title, description, deadlineEnd)
+                .then(() => {
+                    // Очищаем поля
+                    setTitle('');
+                    setDescription('');
+                    //setDeadlineStart('');
+                    setDeadlineEnd('');
+                    onCreate();
+                    onClose();
+                })
+        } else {
+            createPersonalTask(title,description).then(()=> {
                 setTitle('');
                 setDescription('');
-                setDeadlineStart('');
-                setDeadlineEnd('');
+                onCreate();
                 onClose();
             })
-            .catch((err) => {
-                console.error('Ошибка при создании задачи:', err);
-            });
+        }
     };
 
     return (
@@ -51,16 +51,16 @@ const CreateTaskForm = ({ subjectId, onClose, onCreate }) => {
                 onChange={(e) => setDescription(e.target.value)}
             />
             <div className="createtaskform-date-fields">
-                <input
-                    type="date"
-                    value={deadlineStart}
-                    onChange={(e) => setDeadlineStart(e.target.value)}
-                />
-                <input
+                {/*<input*/}
+                {/*    type="date"*/}
+                {/*    value={deadlineStart}*/}
+                {/*    onChange={(e) => setDeadlineStart(e.target.value)}*/}
+                {/*/>*/}
+                {isSubjectTask && <input
                     type="date"
                     value={deadlineEnd}
                     onChange={(e) => setDeadlineEnd(e.target.value)}
-                />
+                />}
             </div>
             <div className="createtaskform-buttons">
                 <button

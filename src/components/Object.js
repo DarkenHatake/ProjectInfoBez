@@ -3,10 +3,11 @@ import CreateItemModal from './CreateItemModal';
 import ItemList from './ItemList';
 import JoinSubject from './JoinSubject';
 import './ComponentsStyles/Object.css';
-import {createSubject, getSubjects} from "../api";
+import {createSubject, getSubjects,deleteSubject} from "../api";
 
 const Object = () => {
 
+    const [items, setItems] = useState([]);
     useEffect( () => {
         async function fetchData() {
             try{
@@ -16,13 +17,11 @@ const Object = () => {
             } catch (e) {
                 console.log(e)
             }
-
         }
         fetchData()
     }, []);
     const [isModalOpen, setModalOpen] = useState(false);
     const [isJoinModalOpen, setIsJoinModalOpen] = useState(false);
-    const [items, setItems] = useState([]);
 
     const handleOpenModal = () => {
         setModalOpen(true);
@@ -32,17 +31,31 @@ const Object = () => {
         setModalOpen(false);
     };
 
-    const handleAddItem = async (title,/* description,*/ deadline) => {
-        const response = await createSubject(title, /*description,*/ deadline);
-        console.log(response);
-        const responceSub = await getSubjects()
-        setItems(responceSub.data)
-        console.log(responceSub.data);
+    const handleAddItem = (title, description) => {
+        createSubject(title, description)
+            .then(() => {
+                console.log('Предмет создан')
+                // После успешного создания предмета запрашиваем обновлённый список
+                return getSubjects();
+            })
+            .then((response) => {
+                // Обновляем состояние с новыми данными
+                setItems(response.data);
+                console.log('Список предметов обновлён:', response.data);
+            })
+            .catch((error) => {
+                console.error('Ошибка при добавлении предмета:', error);
+            });
     };
 
     // Новая функция для удаления предмета
     const handleDeleteItem = (index) => {
-        setItems((prevItems) => prevItems.filter((_, i) => i !== index));
+        deleteSubject(index)
+        .then(() => {
+            getSubjects().then((response) => {
+                setItems(response.data)
+            })
+        })
     };
 
     const handleOpenJoin = () => {

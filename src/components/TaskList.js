@@ -12,7 +12,7 @@ const TaskList = ({ tasks, onEdit, onDelete }) => {
                     key={index}
                     task={task}
                     onEdit={onEdit}
-                    onDelete={onDelete}
+                    onDelete={() => onDelete(task.id)}
                 />
             ))}
         </ul>

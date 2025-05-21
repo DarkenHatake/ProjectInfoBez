@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import CreateTaskForm from './CreateTaskForm';
 import TaskList from './TaskList';
 import EditTask from './EditTask';
-import { getAllPersonalTasks, createPersonalTask, updatePersonalTask, deletePersonalTask } from '../api';
+import { getAllPersonalTasks, updatePersonalTask, deletePersonalTask } from '../api';
 import './ComponentsStyles/PersonalTasks.css';
 
 const PersonalTasks = () => {
@@ -35,15 +35,11 @@ const PersonalTasks = () => {
         setCreateModalOpen(false);
     };
 
-    const handleCreateTask = (newTask) => {
-        createPersonalTask(newTask.title, newTask.description)
+    const handleCreateTask = () => {
+        getAllPersonalTasks()
             .then(res => {
-                setTasks([...tasks, res.data]);
-                handleCloseCreateModal();
+                setTasks(res.data);
             })
-            .catch(err => {
-                console.error('Ошибка создания задачи:', err);
-            });
     };
 
     const handleOpenEditModal = (task) => {
@@ -68,9 +64,9 @@ const PersonalTasks = () => {
     };
 
     const handleDeleteTask = (taskToDelete) => {
-        deletePersonalTask(taskToDelete.id)
+        deletePersonalTask(taskToDelete)
             .then(() => {
-                setTasks(tasks.filter(t => t.id !== taskToDelete.id));
+                getAllPersonalTasks().then(res => {setTasks(res.data);})
             })
             .catch(err => {
                 console.error('Ошибка удаления задачи:', err);
@@ -88,7 +84,7 @@ const PersonalTasks = () => {
 
             {/* Модальное окно: создание задачи */}
             {isCreateModalOpen && (
-                <CreateTaskForm onClose={handleCloseCreateModal} onCreate={handleCreateTask} />
+                <CreateTaskForm onClose={handleCloseCreateModal} onCreate={handleCreateTask} isSubjectTask={false} />
             )}
 
             {/* Модальное окно: редактирование задачи */}

@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8080/api/';
+const API_URL = 'http://localhost:3000/api/';
 
 // Создаем экземпляр Axios с базовым URL
 const api = axios.create({
@@ -38,32 +38,22 @@ export const getSubjects = () => {
 };
 
 export const getSubjectByID = async (id) => {
-  console.log(id)
-  try {
-    // Получаем данные (ожидаем выполнения промиса)
-    const subjects = await getSubjects(); // Должен вернуть массив
-
-    for (const dataKey in subjects.data) {
-      console.log(dataKey.id)
-      console.log(subjects.data)
-      if (dataKey.id === id)
-        return dataKey
-    }
-  } catch (error) {
-    console.error('Ошибка получения предмета:', error);
-    throw error;
-    return
-  }
+  return api.get('subjects/' + id);
 };
 
 // Создать новый предмет
-export const createSubject = (title) => {
-  return api.post('subjects', { title });
+export const createSubject = (title,description) => {
+  return api.post('subjects', { title,description });
 };
 
 // Присоединиться к предмету по коду
 export const joinSubjectByCode = (code) => {
   return api.post('subjects/3/subscribe', { invitationCode: code });
+};
+
+// Присоединиться к предмету по коду
+export const deleteSubject = (id) => {
+  return api.delete(`subjects/${id}`);
 };
 
 // ====== ЗАДАЧИ ПО ПРЕДМЕТУ ======
@@ -72,6 +62,7 @@ export const getTasksBySubjectId = (subjectId) => {
   console.log("SubjectID: ", subjectId)
   return api.get(`subjects/${subjectId}/tasks`);
 };
+
 
 // Создать задачу для предмета
 export const createSubjectTask = (subjectId, title, description, deadline) => {
@@ -95,6 +86,11 @@ export const deleteSubjectTask = (subjectId, taskId) => {
 // Отметить задачу выполненной / сданной
 export const markSubjectTaskDone = (subjectId, taskId) => {
   return api.put(`subjects/${subjectId}/tasks/${taskId}/done`, { isDone: true });
+};
+
+// Отметить задачу выполненной / сданной
+export const markSubjectTaskPassed = (subjectId, taskId) => {
+  return api.put(`subjects/${subjectId}/tasks/${taskId}/pass`, { isPassed: true });
 };
 
 // ====== ПЕРСОНАЛЬНЫЕ ЗАДАЧИ ======
