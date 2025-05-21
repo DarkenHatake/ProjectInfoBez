@@ -31,8 +31,6 @@ const Main = ({ items, personalTasks = [] }) => {
         return (
         <div className="main-main-container">
             <div className="main-content-wrapper">
-                <h1 className="main-dashboard-title">Дашборд</h1>
-
                 <div className="main-top-frames">
                     <div className="main-frame">
                         <h2 className="main-frame-title">Предметы:</h2>
@@ -60,10 +58,6 @@ const Main = ({ items, personalTasks = [] }) => {
                         ) : (
                             <p className="main-no-items">Нет предметов с дедлайном</p>
                         )}
-                    </div>
-
-                    <div className="main-frame">
-                        <h2 className="main-frame-title">Выполнено за 2 недели:</h2>
                     </div>
                 </div>
 
