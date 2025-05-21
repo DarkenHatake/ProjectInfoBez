@@ -64,9 +64,9 @@ const PersonalTasks = () => {
     };
 
     const handleDeleteTask = (taskToDelete) => {
-        deletePersonalTask(taskToDelete.id)
+        deletePersonalTask(taskToDelete)
             .then(() => {
-                setTasks(tasks.filter(t => t.id !== taskToDelete.id));
+                getAllPersonalTasks().then(res => {setTasks(res.data);})
             })
             .catch(err => {
                 console.error('Ошибка удаления задачи:', err);
