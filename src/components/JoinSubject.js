@@ -4,14 +4,14 @@ import React, { useState } from 'react';
 import { joinSubjectByCode } from '../api'; // Импортируем функцию для присоединения к предмету
 import './ComponentsStyles/JoinSubject.css';
 
-const JoinSubject = ({ onClose }) => {
+const JoinSubject = ({ id,onClose }) => {
     const [code, setCode] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
     const handleJoin = () => {
         setLoading(true);
-        joinSubjectByCode(code)
+        joinSubjectByCode(id, code)
             .then(() => {
                 console.log('Успешно присоединились к предмету');
                 onClose(); // Закрываем модальное окно

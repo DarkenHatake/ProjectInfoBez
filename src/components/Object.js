@@ -62,6 +62,9 @@ const Object = () => {
         setIsJoinModalOpen(true)
     }
     const handleCloseJoin = () => {
+        getSubjects().then(response => {
+            setItems(response.data);
+        })
         setIsJoinModalOpen(false);
     };
     return (

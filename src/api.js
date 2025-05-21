@@ -47,8 +47,8 @@ export const createSubject = (title,description) => {
 };
 
 // Присоединиться к предмету по коду
-export const joinSubjectByCode = (code) => {
-  return api.post('subjects/3/subscribe', { invitationCode: code });
+export const joinSubjectByCode = (id,code) => {
+  return api.post(`subjects/${id}/subscribe`, { invitationCode: code });
 };
 
 // Присоединиться к предмету по коду
@@ -98,7 +98,10 @@ export const markSubjectTaskPassed = (subjectId, taskId) => {
 export const getAllPersonalTasks = () => {
   return api.get('personal-tasks');
 };
-
+// Отметить задачу выполненной / сданной
+export const markPersonalTaskDone = ( taskId) => {
+  return api.put(`personal-tasks/${taskId}/pass`, { isPassed: true });
+};
 // Получить персональную задачу по ID
 export const getPersonalTaskById = (taskId) => {
   return api.get(`personal-tasks/${taskId}`);
