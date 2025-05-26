@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './styles/App.css';
 import Main from './components/Main';
@@ -6,13 +6,17 @@ import Object from './components/Object';
 import PersonalTasks from './components/PersonalTasks';
 import Profile from './components/Profile';
 import Navigation from './components/Navigation';
-import ItemPage from './components/ItemPage'; // Импортируем новый компонент
+import ItemPage from './components/ItemPage';
+import {getAllPersonalTasks} from "./api"; // Импортируем новый компонент
 
 // Главный компонент приложения
 const App = () => {
     
     // Состояние для хранения задач (пока локальное, потом заменится на бэкенд)
     const [tasks, setTasks] = useState([]);
+    useEffect(() => {
+        getAllPersonalTasks().then(res => setTasks(res.data))
+    }, []);
     return (
         <div className="app">
             <Router>

@@ -2,11 +2,11 @@
 
 import React, { useState, useEffect } from 'react';
 import { useParams} from 'react-router-dom';
-import {deleteSubject, deleteSubjectTask, getSubjectByID, getTasksBySubjectId} from '../api';
+import {deleteSubject, deleteSubjectTask, getSubjectByID, getTasksBySubjectId, updateSubjectTask} from '../api';
 import TaskList from './TaskList';
 import ShareCodeModal from './ShareCodeModal';
 import CreateTaskForm from './CreateTaskForm';
-
+import './ComponentsStyles/ItemPage.css'
 const ItemPage = () => {
     //const location = useLocation();
     const [item, setItem]  = useState({});
@@ -68,7 +68,7 @@ const ItemPage = () => {
     return (
         <div className="item-page-container">
             <h1>{item.title}</h1>
-            <button onClick={handleJoinClick}>Поделиться</button>
+            <button onClick={handleJoinClick} className={'item-page-share-button'}>Поделиться</button>
             {isModalOpen && <ShareCodeModal code={item.invitation_code} onClose={handleCloseModal}/>}
 
 
@@ -82,7 +82,7 @@ const ItemPage = () => {
                     {isCreateOpen && (
                         <CreateTaskForm onClose={handleCloseCreateModal} subjectId={id} onCreate={handleCreateTask} />
                     )}
-                    <TaskList tasks={tasks} onEdit={() => {}} onDelete={handleDeleteTask}/>
+                    <TaskList tasks={tasks} onEdit={()=>{}} onDelete={handleDeleteTask}/>
                 </div>
             )}
         </div>

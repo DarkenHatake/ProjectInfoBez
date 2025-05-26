@@ -14,7 +14,7 @@ const Item = ({ item, index, onDelete }) => {
                     <p className="item-deadline"><strong>Дедлайн:</strong> {item.deadline}</p>
                 )}
             </div>
-            <button className="item-delete-button" onClick={() => onDelete(index)}>Удалить</button>
+            <button className="item-delete-button" onClick={onDelete}>Удалить</button>
             <Link to={{ pathname: `/item-page/${item.id}`, state: { item } }} className="item-go-button">Перейти</Link>
         </li>
     );

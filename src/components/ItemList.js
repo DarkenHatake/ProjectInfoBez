@@ -12,7 +12,7 @@ const ItemList = ({ items = [], onDelete }) => {
         <div className="itemlist-item-list-container">
             <ul className="itemlist-item-list">
                 {items.map((item) => (
-                    <Item key={item.id} item={item} onDelete={onDelete} index={item.id}/>
+                    <Item key={item.id} item={item} onDelete={() => onDelete(item.id)} />
                 ))}
             </ul>
         </div>

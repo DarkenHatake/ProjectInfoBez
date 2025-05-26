@@ -1,14 +1,23 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import './ComponentsStyles/Main.css';
 
 const Main = ({ items, personalTasks = [] }) => {
     // Функция для сортировки предметов по дедлайну (сначала ближайшие)
+    const [closestItems, setClosestItems] = useState([]);
+    const [closestTasks, setClosestTasks] = useState([]);
+
+    useEffect(() => {
+       setClosestItems(getClosestDeadlineItems());
+       setClosestTasks(getClosestTasks());
+       console.log(personalTasks);
+    }, []);
+
     const getClosestDeadlineItems = () => {
         if (!items || items.length === 0) return [];
-
+        console.log(personalTasks)
         // Фильтруем предметы с дедлайном и сортируем их
-        const itemsWithDeadline = items.filter(item => item.deadline);
+        const itemsWithDeadline = items;
         const sortedItems = [...itemsWithDeadline].sort((a, b) => {
             return new Date(a.deadline) - new Date(b.deadline);
         });
@@ -20,13 +29,10 @@ const Main = ({ items, personalTasks = [] }) => {
     // Функция для получения 2 ближайших персональных задач
     const getClosestTasks = () => {
         return [...personalTasks]
-            .filter(task => task.deadline)
             .sort((a, b) => new Date(a.deadline) - new Date(b.deadline))
             .slice(0, 2);
     };
 
-    const closestItems = getClosestDeadlineItems();
-    const closestTasks = getClosestTasks();
 
         return (
         <div className="main-main-container">

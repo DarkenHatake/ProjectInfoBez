@@ -2,7 +2,7 @@
 
 import React, {useEffect, useState} from 'react';
 import { updateSubjectTask } from '../api'; // Импортируем функцию для обновления задачи
-
+import './ComponentsStyles/EditTask.css'
 const EditTask = ({ task, onClose, onEdit }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');

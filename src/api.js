@@ -48,7 +48,7 @@ export const createSubject = (title,description) => {
 
 // Присоединиться к предмету по коду
 export const joinSubjectByCode = (id,code) => {
-  return api.post(`subjects/${id}/subscribe`, { invitationCode: code });
+  return api.post(`subjects/subscribe`, { invitationCode: code });
 };
 
 // Присоединиться к предмету по коду

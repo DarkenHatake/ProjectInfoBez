@@ -15,7 +15,7 @@ position: fixed;
 .createitemmodal-create-item-modal {
   position: absolute;
   width: 450px;
-  height: 220px;
+  height: 350px;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
