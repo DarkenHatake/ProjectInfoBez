@@ -11,8 +11,8 @@ const Task = ({ task, onEdit, onDelete }) => {
                 {task.description && (
                     <p className="task-description">Описание: {task.description}</p>
                 )}
-                {task.deadlineStart && (
-                    <p className="task-deadline-1">Дата начала: {task.deadlineStart}</p>
+                {task.deadline && (
+                    <p className="task-deadline">Дата сдачи: {task.deadline}</p>
                 )}
                 {task.deadlineEnd && (
                     <p className="task-deadline-2">Дата сдачи: {task.deadlineEnd}</p>

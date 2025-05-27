@@ -1,0 +1,13 @@
+.EditItemModal-modal-content{
+    font-family: 'Roboto Mono', monospace;
+}
+.EditItemModal-cancel-button{
+    position: absolute;
+    width: 150px;
+    height: 60px;
+    left: 780px;
+    top: 682px;
+}
+.EditItemModal-form-group{
+
+}

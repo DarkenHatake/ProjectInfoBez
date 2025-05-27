@@ -28,11 +28,11 @@
 
 /* Заголовок */
 .sharecodemodal-share-modal-title {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Roboto Mono', monospace;;
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
+    font-size: 23px;
+    line-height: 26px;
     color: #000000;
     margin: 0 0 25px 0;
 }
@@ -46,15 +46,13 @@
 }
 
 .sharecodemodal-code-label {
-    font-family: 'Inter', sans-serif;
     font-style: normal;
+    font-family: 'Roboto Mono', monospace;
     font-weight: 400;
-    font-size: 20px;
     line-height: 24px;
     color: #000000;
-    margin-right: 15px;
+    font-size: 23px;
     white-space: nowrap;
-    width: 50px; /* Фиксированная ширина для выравнивания */
 }
 
 .sharecodemodal-code-input {
@@ -80,6 +78,12 @@
     width: 432px;
     margin-top: auto;
     height: 55px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 .sharecodemodal-back-button {

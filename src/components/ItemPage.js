@@ -67,7 +67,7 @@ const ItemPage = () => {
 
     return (
         <div className="item-page-container">
-            <h1>{item.title}</h1>
+            <h1 className ="item-page-name-object">{item.title}</h1>
             <button onClick={handleJoinClick} className={'item-page-share-button'}>Поделиться</button>
             {isModalOpen && <ShareCodeModal code={item.invitation_code} onClose={handleCloseModal}/>}
 
@@ -76,13 +76,13 @@ const ItemPage = () => {
 
             { !error && (
                 <div>
-                    <h2>Задачи</h2>
+                    <h2 className={"item-page-zadacha"}>Задачи:</h2>
 
                     <button className="item-create-personal-tasks" onClick={handleOpenCreateModal}>Создать задачу</button>
                     {isCreateOpen && (
                         <CreateTaskForm onClose={handleCloseCreateModal} subjectId={id} onCreate={handleCreateTask} />
                     )}
-                    <TaskList tasks={tasks} onEdit={()=>{}} onDelete={handleDeleteTask}/>
+                    <TaskList tasks={tasks} onEdit={()=>{}} onDelete={handleDeleteTask} isSubjectTask={false}/>
                 </div>
             )}
         </div>

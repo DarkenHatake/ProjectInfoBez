@@ -34,6 +34,22 @@
     box-sizing: border-box;
 }
 .item-go-button {
+    text-decoration: none;
+    width: 104px;
+    height: 31px;
+    padding: 5px 20px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 16px;
+    background-color: #a8ffa8;
+    border: 2px solid #a8ffa8; /* Прозрачный фон */
+    border-radius: 5px; /* Скругленные углы */
+    cursor: pointer;
+    margin-left: 20px; /* Отступ слева от заголовка */
+    box-sizing: border-box;
+    color: inherit;
+}
+.item-change-button{
+    text-decoration: none;
     width: 104px;
     height: 31px;
     padding: 5px 20px;
