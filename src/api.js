@@ -108,8 +108,8 @@ export const getPersonalTaskById = (taskId) => {
 };
 
 // Создать персональную задачу
-export const createPersonalTask = (title, description) => {
-  return api.post('personal-tasks', { title, description });
+export const createPersonalTask = (title, description, deadline) => {
+  return api.post('personal-tasks', { title, description, deadline });
 };
 
 // Обновить персональную задачу

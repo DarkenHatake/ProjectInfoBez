@@ -2,20 +2,30 @@
 
 import React, { useState, useEffect } from 'react';
 import { useParams} from 'react-router-dom';
-import {deleteSubject, deleteSubjectTask, getSubjectByID, getTasksBySubjectId, updateSubjectTask} from '../api';
+import {
+    deleteSubject,
+    deleteSubjectTask,
+    getSubjectByID,
+    getTasksBySubjectId,
+    updatePersonalTask,
+    updateSubjectTask
+} from '../api';
 import TaskList from './TaskList';
 import ShareCodeModal from './ShareCodeModal';
 import CreateTaskForm from './CreateTaskForm';
 import './ComponentsStyles/ItemPage.css'
+import EditTask from './EditTask';
 const ItemPage = () => {
     //const location = useLocation();
     const [item, setItem]  = useState({});
     const [tasks, setTasks] = useState([]);
-
+    const [currentTask, setCurrentTask] = useState(null);
     const [error, setError] = useState(null);
+    const [isEditModalOpen, setEditModalOpen] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const { id } = useParams(); // /users/:id
     const [isCreateOpen, setCreateOpen] = useState(false);
+    const [isCreateModalOpen, setCreateModalOpen] = useState(false);
     useEffect(() => {
         try {
             getSubjectByID(id).then( res => {
@@ -35,7 +45,10 @@ const ItemPage = () => {
             setTasks(res.data);
         })
     };
-
+    const handleCloseEditModal = () => {
+        setEditModalOpen(false);
+        setCurrentTask(null);
+    };
     const handleDeleteTask = (taskID) => {
 
         deleteSubjectTask(id, taskID).then( () => {
@@ -45,12 +58,25 @@ const ItemPage = () => {
         })
 
     };
-
+    const handleEditTask = (updatedTask) => {
+        updatePersonalTask(currentTask.id, updatedTask)
+            .then(() => {
+                setTasks(tasks.map(t => t.id === currentTask.id ? { ...t, ...updatedTask } : t));
+                handleCloseEditModal();
+            })
+            .catch(err => {
+                console.error('Ошибка обновления задачи:', err);
+            });
+    };
     const handleJoinClick = () => {
         setIsModalOpen(true);
     };
     const handleOpenCreateModal = () => {
         setCreateOpen(true);
+    };
+    const handleOpenEditModal = (task) => {
+        setCurrentTask(task);
+        setEditModalOpen(true);
     };
 
     const handleCloseCreateModal = () => {
@@ -79,10 +105,22 @@ const ItemPage = () => {
                     <h2 className={"item-page-zadacha"}>Задачи:</h2>
 
                     <button className="item-create-personal-tasks" onClick={handleOpenCreateModal}>Создать задачу</button>
-                    {isCreateOpen && (
-                        <CreateTaskForm onClose={handleCloseCreateModal} subjectId={id} onCreate={handleCreateTask} />
+                    <TaskList tasks={tasks} onEdit={handleOpenEditModal} onDelete={handleDeleteTask} />
+
+                    {/* Модальное окно: создание задачи */}
+                    {isCreateModalOpen && (
+                        <CreateTaskForm onClose={handleCloseCreateModal} onCreate={handleCreateTask} isSubjectTask={false} />
                     )}
-                    <TaskList tasks={tasks} onEdit={()=>{}} onDelete={handleDeleteTask} isSubjectTask={false}/>
+
+                    {/* Модальное окно: редактирование задачи */}
+                    {isEditModalOpen && (
+                        <EditTask
+                            task={currentTask}
+                            onClose={handleCloseEditModal}
+                            onEdit={handleEditTask}
+                        />
+                    )}
+
                 </div>
             )}
         </div>

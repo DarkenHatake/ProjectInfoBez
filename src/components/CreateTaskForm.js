@@ -25,7 +25,7 @@ const CreateTaskForm = ({ subjectId, onClose, onCreate,isSubjectTask = true}) =>
                     onClose();
                 })
         } else {
-            createPersonalTask(title,description).then(()=> {
+            createPersonalTask(title,description, deadlineStart).then(()=> {
                 setTitle('');
                 setDescription('');
                 setDeadlineStart('');
