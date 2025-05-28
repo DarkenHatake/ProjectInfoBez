@@ -128,4 +128,17 @@ export const getProfile = () => {
   return api.get('profile');
 };
 
+export const getCurrentUser = () => {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    throw new Error('Токен не найден в localStorage');
+  }
+
+  return axios.get(`${API_URL}me`, { // Путь /me соответствует эндпоинту на бэкенде
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
 export default api;
