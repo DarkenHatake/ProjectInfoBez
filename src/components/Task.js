@@ -14,9 +14,6 @@ const Task = ({ task, onEdit, onDelete }) => {
                 {task.deadline && (
                     <p className="task-deadline">Дата сдачи: {task.deadline}</p>
                 )}
-                {task.deadlineEnd && (
-                    <p className="task-deadline-2">Дата сдачи: {task.deadlineEnd}</p>
-                )}
             </div>
             <div className="task-buttons">
                 <button className="task-delete-button" onClick={() => onDelete(task)}>

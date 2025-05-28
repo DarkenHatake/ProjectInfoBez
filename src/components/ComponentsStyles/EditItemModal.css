@@ -1,13 +1,106 @@
-.EditItemModal-modal-content{
-    font-family: 'Roboto Mono', monospace;
-}
-.EditItemModal-cancel-button{
-    position: absolute;
-    width: 150px;
-    height: 60px;
-    left: 780px;
-    top: 682px;
-}
-.EditItemModal-form-group{
+/* EditItemModal.css */
 
+/* Оверлей с затемнением */
+.EditItemModal-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Основной контейнер модального окна */
+.EditItemModal-modal-content {
+  width: 480px;
+  padding: 30px;
+  background: #ffffff;
+  border: 3px solid #a8ffa8;
+  border-radius: 12px;
+  box-sizing: border-box;
+  font-family: 'Roboto Mono', monospace;
+}
+
+/* Заголовок */
+.EditItemModal-modal-content h2 {
+  font-size: 22px;
+  font-weight: 400;
+  color: #000000;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Группы полей формы */
+.EditItemModal-form-group {
+  margin-bottom: 15px;
+}
+
+/* Поля ввода */
+.EditItemModal-input-field,
+.EditItemModal-textarea-field {
+  width: 100%;
+  padding: 10px;
+  background: #ffffff;
+  border: 2px solid #000000;
+  border-radius: 4px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.EditItemModal-textarea-field {
+  height: 70px;
+  resize: vertical;
+}
+
+/* Плейсхолдеры */
+.EditItemModal-input-field::placeholder,
+.EditItemModal-textarea-field::placeholder {
+  color: #7e7979;
+}
+
+/* Контейнер кнопок */
+.EditItemModal-modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Общие стили кнопок */
+.EditItemModal-save-button,
+.EditItemModal-cancel-button {
+  flex: 1;
+  padding: 10px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  height: 60px;
+}
+
+/* Кнопка "Сохранить" */
+.EditItemModal-save-button {
+  background: #80ffe8;
+  border: none;
+}
+
+.EditItemModal-save-button:hover {
+  background: #00ccb3;
+}
+
+/* Кнопка "Отмена" */
+.EditItemModal-cancel-button {
+  background: #ffffff;
+  border: 2px solid #ff0011;
+}
+
+.EditItemModal-cancel-button:hover {
+  background: #ff0011;
+  color: #ffffff;
 }
