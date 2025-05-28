@@ -12,8 +12,15 @@ const Task = ({ task, onEdit, onDelete }) => {
                     <p className="task-description">Описание: {task.description}</p>
                 )}
                 {task.deadline && (
-                    <p className="task-deadline">Дата сдачи: {task.deadline}</p>
+                    <p className="task-deadline">
+                        Дата сдачи: {new Date(task.deadline).toLocaleDateString('ru-RU', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    })}
+                    </p>
                 )}
+
             </div>
             <div className="task-buttons">
                 <button className="task-delete-button" onClick={() => onDelete(task)}>

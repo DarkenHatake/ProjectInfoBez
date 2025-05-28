@@ -29,7 +29,8 @@
 
 .task-description {
     font-size: 14px;
-    margin: 5px 0;  
+    margin: 5px 0;
+    font-family: 'Roboto Mono', monospace;
 }
 
 .task-deadlines-row {
@@ -46,6 +47,7 @@
 
 .task-deadline {
     font-size: 14px;
+    font-family: 'Roboto Mono', monospace;
     margin: 0;
 }
 
