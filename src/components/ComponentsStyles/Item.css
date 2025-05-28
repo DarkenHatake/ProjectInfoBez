@@ -1,6 +1,5 @@
 .item-item {
     position: relative;
-    width: 100%;
     height: auto; /* Изменено на auto для адаптивности */
     font-family: 'Roboto Mono', monospace;
     background: #ffffff;
@@ -15,10 +14,12 @@
 }
 .item-item-name {
     margin-top: 10px;
-
+    margin-left: 10px;
+    width: 100px;
+    font-size: 24px;
 }
-.item-header{
-    text-align: left;
+.item-headr{
+
 }
 .item-delete-button {
     width: 104px;
@@ -64,6 +65,9 @@
 }
 .item-description{
     margin-top: 30px;
+    width: 200px;
+    font-size: 20px;
+    margin-left: 20px;
 }
 .item-deadline {
     margin-top: 10px; /* Отступ сверху для описания и дедлайна */

@@ -30,7 +30,6 @@ const Profile = () => {
             <div className="profile-content">
                 <div className="profile-header">
                     <h1 className="profile-title">Профиль</h1>
-                    <button className="profile-edit-button">Редактировать</button>
                 </div>
 
                 <div className="profile-card">
@@ -42,10 +41,6 @@ const Profile = () => {
                         <div className="profile-data-row">
                             <span className="profile-data-label">Email:</span>
                             <span className="profile-data-value">{user.email}</span>
-                        </div>
-                        <div className="profile-data-row">
-                            <span className="profile-data-label">Password:</span>
-                            <span className="profile-data-value">••••••••</span>
                         </div>
                     </div>
                 </div>

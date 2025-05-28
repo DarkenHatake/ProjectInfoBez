@@ -23,12 +23,9 @@ const Item = ({ item, index, onDelete, onEdit }) => {
         <>
             <li className="item-item">
                 <div className="item-headr">
-                    <h3 className="item-name">{item.title}</h3>
+                    <h3 className="item-item-name">{item.title}</h3>
                     {item.description && (
                         <p className="item-description"><strong>Описание:</strong> {item.description}</p>
-                    )}
-                    {item.deadline && (
-                        <p className="item-deadline"><strong>Дедлайн:</strong> {item.deadline}</p>
                     )}
                 </div>
                 <button className="item-delete-button" onClick={onDelete}>Удалить</button>

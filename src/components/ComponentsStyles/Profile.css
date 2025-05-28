@@ -32,7 +32,11 @@
     color: #000000;
     margin: 0;
     padding: 0;
-    margin-right: auto; /* Вот ключевое свойство! */
+    width: 100px;
+    height: 32px;
+    font-style: normal;
+    line-height: 32px;
+ /* Вот ключевое свойство! */
 }
 
 

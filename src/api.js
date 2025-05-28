@@ -45,7 +45,9 @@ export const getSubjectByID = async (id) => {
 export const createSubject = (title,description) => {
   return api.post('subjects', { title,description });
 };
-
+export const updateSubject = (subjectId, title,description) => {
+  return api.post(`subjects/${subjectId}`, { title,description });
+};
 // Присоединиться к предмету по коду
 export const joinSubjectByCode = (id,code) => {
   return api.post(`subjects/subscribe`, { invitationCode: code });
@@ -74,8 +76,8 @@ export const createSubjectTask = (subjectId, title, description, deadline) => {
 };
 
 // Обновить задачу предмета
-export const updateSubjectTask = (subjectId, taskId, data) => {
-  return api.put(`subjects/${subjectId}/tasks/${taskId}`, data);
+export const updateSubjectTask = (subjectId, taskId, title, description, deadline) => {
+  return api.put(`subjects/${subjectId}/tasks/${taskId}`,{title, description, deadline});
 };
 
 // Удалить задачу предмета
@@ -109,12 +111,12 @@ export const getPersonalTaskById = (taskId) => {
 
 // Создать персональную задачу
 export const createPersonalTask = (title, description, deadline) => {
-  return api.post('personal-tasks', { title, description, deadline });
+  return api.post('personal-tasks', { title, description, deadline});
 };
 
 // Обновить персональную задачу
-export const updatePersonalTask = (taskId, data) => {
-  return api.put(`personal-tasks/${taskId}`, data);
+export const updatePersonalTask = (taskId, title = "", description = "", deadline = "") => {
+  return api.put(`personal-tasks/${taskId}`, {title:title, description:description, deadline:deadline});
 };
 
 // Удалить персональную задачу
@@ -125,7 +127,7 @@ export const deletePersonalTask = (taskId) => {
 // ====== ПРОФИЛЬ ПОЛЬЗОВАТЕЛЯ ======
 // Получить данные профиля
 export const getProfile = () => {
-  return api.get('profile');
+  return api.get('auth/profile');
 };
 
 export default api;

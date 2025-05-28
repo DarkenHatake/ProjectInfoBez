@@ -1,42 +1,39 @@
 // EditTask.js
 
 import React, {useEffect, useState} from 'react';
-import { updateSubjectTask } from '../api'; // Импортируем функцию для обновления задачи
+import {updateSubjectTask, updatePersonalTask} from '../api'; // Импортируем функцию для обновления задачи
 import './ComponentsStyles/EditTask.css'
-const EditTask = ({ task, onClose, onEdit }) => {
+const EditTask = ({ task, onClose, onEdit, isSubjectTask }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [startDate, setStartDate] = useState('');
-    const [endDate, setEndDate] = useState('');
-
+    const [deadline, setdeadline] = useState('');
+    const handleSaveChanges = () => {
+        if (isSubjectTask) {
+            updateSubjectTask(task.subject_id, task.id, title, description, deadline)
+                .then(() => {
+                    onClose();
+                    setTitle('');
+                    setDescription('');
+                    setdeadline('');
+                })
+        } else {
+            updatePersonalTask(task.id, title,description, deadline).then(()=> {
+                onClose();
+                setTitle('');
+                setDescription('');
+                setdeadline('');
+            })
+        }
+    };
     useEffect(() => {
         // Заполняем поля данными текущей задачи
         if (task) {
             setTitle(task.title);
             setDescription(task.description);
-            setStartDate(task.deadlineStart);
-            setEndDate(task.deadlineEnd);
+            setdeadline(task.deadline);
         }
     }, [task]);
 
-    const handleSaveChanges = () => {
-        const updatedTask = {
-            title,
-            description,
-            deadlineStart: startDate,
-            deadlineEnd: endDate,
-        };
-
-        // Отправляем обновление на сервер
-        updateSubjectTask(task.subjectId, task.id, updatedTask)
-            .then(() => {
-                onEdit(updatedTask); // Обновляем состояние в родительском компоненте
-                onClose(); // Закрываем модальное окно
-            })
-            .catch((err) => {
-                console.error('Ошибка при обновлении задачи:', err);
-            });
-    };
 
     return (
         <div className="edittask-edit-task-wrapper">
@@ -59,14 +56,8 @@ const EditTask = ({ task, onClose, onEdit }) => {
                     <input
                         type="date"
                         className="edittask-input-field"
-                        value={startDate}
-                        onChange={(e) => setStartDate(e.target.value)}
-                    />
-                    <input
-                        type="date"
-                        className="edittask-input-field"
-                        value={endDate}
-                        onChange={(e) => setEndDate(e.target.value)}
+                        value={deadline}
+                        onChange={(e) => setdeadline(e.target.value)}
                     />
                 </div>
                 <div className="edittask-buttons-container">

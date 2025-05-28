@@ -48,20 +48,14 @@ const PersonalTasks = () => {
     };
 
     const handleCloseEditModal = () => {
+        getAllPersonalTasks()
+            .then(res => {
+                setTasks(res.data);
+            })
         setEditModalOpen(false);
         setCurrentTask(null);
     };
 
-    const handleEditTask = (updatedTask) => {
-        updatePersonalTask(currentTask.id, updatedTask)
-            .then(() => {
-                setTasks(tasks.map(t => t.id === currentTask.id ? { ...t, ...updatedTask } : t));
-                handleCloseEditModal();
-            })
-            .catch(err => {
-                console.error('Ошибка обновления задачи:', err);
-            });
-    };
 
     const handleDeleteTask = (taskToDelete) => {
         deletePersonalTask(taskToDelete)
@@ -92,7 +86,7 @@ const PersonalTasks = () => {
                 <EditTask
                     task={currentTask}
                     onClose={handleCloseEditModal}
-                    onEdit={handleEditTask}
+                    isSubjectTask={false}
                 />
             )}
         </div>

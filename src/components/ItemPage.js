@@ -3,12 +3,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams} from 'react-router-dom';
 import {
-    deleteSubject,
     deleteSubjectTask,
     getSubjectByID,
     getTasksBySubjectId,
-    updatePersonalTask,
-    updateSubjectTask
 } from '../api';
 import TaskList from './TaskList';
 import ShareCodeModal from './ShareCodeModal';
@@ -45,10 +42,6 @@ const ItemPage = () => {
             setTasks(res.data);
         })
     };
-    const handleCloseEditModal = () => {
-        setEditModalOpen(false);
-        setCurrentTask(null);
-    };
     const handleDeleteTask = (taskID) => {
 
         deleteSubjectTask(id, taskID).then( () => {
@@ -57,16 +50,6 @@ const ItemPage = () => {
             })
         })
 
-    };
-    const handleEditTask = (updatedTask) => {
-        updatePersonalTask(currentTask.id, updatedTask)
-            .then(() => {
-                setTasks(tasks.map(t => t.id === currentTask.id ? { ...t, ...updatedTask } : t));
-                handleCloseEditModal();
-            })
-            .catch(err => {
-                console.error('Ошибка обновления задачи:', err);
-            });
     };
     const handleJoinClick = () => {
         setIsModalOpen(true);
@@ -77,6 +60,14 @@ const ItemPage = () => {
     const handleOpenEditModal = (task) => {
         setCurrentTask(task);
         setEditModalOpen(true);
+    };
+
+    const handleCloseEditModal = () => {
+        getTasksBySubjectId(item.id).then( res => {
+            setTasks(res.data);
+        })
+        setEditModalOpen(false);
+        setCurrentTask(null);
     };
 
     const handleCloseCreateModal = () => {
@@ -108,8 +99,8 @@ const ItemPage = () => {
                     <TaskList tasks={tasks} onEdit={handleOpenEditModal} onDelete={handleDeleteTask} />
 
                     {/* Модальное окно: создание задачи */}
-                    {isCreateModalOpen && (
-                        <CreateTaskForm onClose={handleCloseCreateModal} onCreate={handleCreateTask} isSubjectTask={false} />
+                    {isCreateOpen && (
+                        <CreateTaskForm subjectId = {item.id} onClose={handleCloseCreateModal} onCreate={handleCreateTask} isSubjectTask={true} />
                     )}
 
                     {/* Модальное окно: редактирование задачи */}
@@ -117,7 +108,7 @@ const ItemPage = () => {
                         <EditTask
                             task={currentTask}
                             onClose={handleCloseEditModal}
-                            onEdit={handleEditTask}
+                            isSubjectTask={true}
                         />
                     )}
 
