@@ -166,7 +166,8 @@
 
 /* Сообщение об ошибке */
 .login-error-message {
-  padding: 10px;
+  padding: 8px;
+  margin: 0 0 15px 0; /* Добавляем отступ снизу */
   margin-bottom: 15px;
   background-color: #ffebee;
   border: 1px solid #ffcdd2;
@@ -175,6 +176,7 @@
   font-family: 'Roboto Mono', monospace;
   font-size: 16px;
   text-align: center;
+  width: calc(100% - 20px); /* Учитываем padding родителя */
 }
 
 /* Анимация появления */

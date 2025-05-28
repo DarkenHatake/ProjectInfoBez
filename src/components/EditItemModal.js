@@ -21,32 +21,35 @@ const EditItemModal = ({ item, onSave, onClose }) => {
         onSave(editedItem);
     };
 
-    return (
+     return (
         <div className="EditItemModal-modal-overlay">
             <div className="EditItemModal-modal-content">
                 <h2>Редактирование элемента</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="EditItemModal-form-group">
-                        <label>Название:</label>
                         <input
                             type="text"
                             name="title"
                             value={editedItem.title}
                             onChange={handleChange}
+                            placeholder="Название предмета"
                             required
+                            className="EditItemModal-input-field"
                         />
                     </div>
                     <div className="EditItemModal-form-group">
-                        <label>Описание:</label>
                         <textarea
                             name="description"
                             value={editedItem.description}
                             onChange={handleChange}
+                            placeholder="Описание предмета"
+                            className="EditItemModal-textarea-field"
                         />
                     </div>
                     <div className="EditItemModal-modal-buttons">
-                        <button type="submit" className="EditItemModal-save-button">Сохранить</button>
                         <button type="button" className="EditItemModal-cancel-button" onClick={onClose}>Отмена</button>
+                        <button type="submit" className="EditItemModal-save-button">Сохранить</button>
+                        
                     </div>
                 </form>
             </div>

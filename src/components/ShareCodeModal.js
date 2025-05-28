@@ -11,6 +11,7 @@ const ShareCodeModal = ({ code, onClose }) => {
     };
 
     return (
+        <div className="login-modal-overlay">
         <div className="sharecodemodal-share-modal-container">
             <div className="sharecodemodal-share-modal-content">
                 <h2 className="sharecodemodal-share-modal-title">Поделиться предметом</h2>
@@ -23,6 +24,7 @@ const ShareCodeModal = ({ code, onClose }) => {
                     <button className="sharecodemodal-copy-button" onClick={handleCopy}>Скопировать</button>
                 </div>
             </div>
+        </div>
         </div>
     );
 };

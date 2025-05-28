@@ -1,21 +1,18 @@
-// EditTask.js
-
 import React, {useEffect, useState} from 'react';
-import { updateSubjectTask } from '../api'; // Импортируем функцию для обновления задачи
+import { updatePersonalTask } from '../api'; // Изменяем на персональные задачи
 import './ComponentsStyles/EditTask.css'
+
 const EditTask = ({ task, onClose, onEdit }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [startDate, setStartDate] = useState('');
-    const [endDate, setEndDate] = useState('');
+    const [deadline, setDeadline] = useState(''); // Только одна дата
 
     useEffect(() => {
-        // Заполняем поля данными текущей задачи
         if (task) {
             setTitle(task.title);
             setDescription(task.description);
-            setStartDate(task.deadlineStart);
-            setEndDate(task.deadlineEnd);
+            // Используем deadlineEnd или deadline, в зависимости от вашей структуры
+            setDeadline(task.deadline || task.deadlineEnd || '');
         }
     }, [task]);
 
@@ -23,15 +20,14 @@ const EditTask = ({ task, onClose, onEdit }) => {
         const updatedTask = {
             title,
             description,
-            deadlineStart: startDate,
-            deadlineEnd: endDate,
+            deadline, // Только одно поле с датой
         };
 
-        // Отправляем обновление на сервер
-        updateSubjectTask(task.subjectId, task.id, updatedTask)
+        // Используем updatePersonalTask вместо updateSubjectTask
+        updatePersonalTask(task.id, updatedTask)
             .then(() => {
-                onEdit(updatedTask); // Обновляем состояние в родительском компоненте
-                onClose(); // Закрываем модальное окно
+                onEdit(updatedTask);
+                onClose();
             })
             .catch((err) => {
                 console.error('Ошибка при обновлении задачи:', err);
@@ -59,14 +55,8 @@ const EditTask = ({ task, onClose, onEdit }) => {
                     <input
                         type="date"
                         className="edittask-input-field"
-                        value={startDate}
-                        onChange={(e) => setStartDate(e.target.value)}
-                    />
-                    <input
-                        type="date"
-                        className="edittask-input-field"
-                        value={endDate}
-                        onChange={(e) => setEndDate(e.target.value)}
+                        value={deadline}
+                        onChange={(e) => setDeadline(e.target.value)}
                     />
                 </div>
                 <div className="edittask-buttons-container">

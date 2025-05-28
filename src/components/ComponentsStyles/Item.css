@@ -12,6 +12,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    text-align: left;
 }
 .item-item-name {
     margin-top: 10px;
